@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adventure</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+  </head>
+
+  <body class="bg-dark text-white" id="top">
+    <div class="container p-5">
+      <div class="row">
+        <div class="col-md-7">
+          <h2 id="locationTitle"></h2>
+          <div id="textOutput"></div>
+          <div id="itemsOnLocation"></div>
+          <div id="encounter"></div>
+          <div id="incident"></div>
+          <div id="npcArea"></div>
+          <ul class="list-group my-4" id="choices"></ul>
+        </div>
+        <div class="col-md-5">
+          <div class="row my-4">
+            <div class="col text-center">
+              <img
+                id="locationImage"
+                class="img-fluid border border-dark rounded"
+                src=""
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col" id="playerCharacterArea"></div>
+          </div>
+
+          <!--
+        <div class="row">
+          <div class="col-12">
+            <span class="badge text-bg-danger" id="currentEntry"></span>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Id of Entry" id="entryId"
+                onkeypress="if (event.keyCode == 13) jumpToEntryId()" />
+              <button class="btn btn-outline-secondary" type="button" id="jumpToEntry" onclick="jumpToEntryId()">
+                Jump to Entry
+              </button>
+            </div>
+          </div>
+        </div>
+      -->
+        </div>
+      </div>
+    </div>
+
+    <script src="js/modals.js"></script>
+    <script src="js/renderers.js"></script>
+    <script src="js/characters.js"></script>
+    <script src="js/adventure.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      generateStartModal();
+      generateMapModal();
+      generatePlayerDiesModal();
+      generateInventoryFullModal();
+      generateNotificationsModal();
+      generateDetailsModal();
+      renderIntroduction(introduction, availableCharacters);
+    </script>
+  </body>
+</html>
