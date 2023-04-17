@@ -49,8 +49,20 @@ function generateStartModal() {
   col1.appendChild(startDesc);
   row1.appendChild(col1);
 
+  const loadRow = document.createElement("div");
+  loadRow.classList.add("row");
+  const loadCol = document.createElement("div");
+  loadCol.classList.add("col");
+  const loadArea = document.createElement("p");
+  loadArea.classList.add("text-center");
+  loadArea.id = "loadArea";
+
+  loadCol.appendChild(loadArea);
+  loadRow.appendChild(loadCol);
+
   modalBody.appendChild(row1);
   modalBody.appendChild(row2);
+  modalBody.appendChild(loadRow);
 
   modalContent.appendChild(modalBody);
 
@@ -59,6 +71,8 @@ function generateStartModal() {
   startModal.appendChild(modalDialog);
 
   document.body.appendChild(startModal);
+
+  renderLoadSaveArea("loadArea", false);
 }
 
 function generateMapModal() {

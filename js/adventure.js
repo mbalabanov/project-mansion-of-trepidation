@@ -371,7 +371,10 @@ const adventure = {
       "A row of wooden cabinets lines one wall, each one filled with an array of brushes, combs, and other grooming tools, while a small door at the back led to a paddock where the horses could stretch their legs and graze on fresh grass.",
     ],
     connections: [
-      { reference: "e7434", text: "Go through the stables into the mansion." },
+      {
+        reference: "e7434",
+        text: "Go through the stables into the Holding Pens inside the mansion.",
+      },
       { reference: "e6048", text: "Go west along trail." },
     ],
     encounter: {},
@@ -463,15 +466,33 @@ const adventure = {
       "This is the Dining Room. It is an imposing yet at the same time comfortable space, with polished hardwood floors and ornate wallpaper adorning the walls. A rectangular table dominates the center of the room, surrounded by high-backed chairs and set with fine china and silverware.",
       "The room exudes an air of formality and elegance, a space reserved for good meals and cordial events.",
     ],
-    connections: [
-      { reference: "e70ce", text: "Go north to the Library." },
-      { reference: "e54cc", text: "Go south to the Gambling Room." },
-      { reference: "e67d2", text: "Go east to the Hall of Chess." },
-      { reference: "e53b4", text: "Go west to the Kitchen." },
-    ],
+    connections: [],
     encounter: {},
     items: {},
-    incident: {},
+    incident: {
+      text: "You cross a beam of light and suddenly an arrow shoots out of a trap in the wall! Test your agility! If you are unsuccessful you will take damage.",
+      condition: "agility",
+      success: {
+        text: "You managed to dodge the arrow.",
+        connections: [
+          { reference: "e70ce", text: "Go north to the Library." },
+          { reference: "e54cc", text: "Go south to the Gambling Room." },
+          { reference: "e67d2", text: "Go east to the Hall of Chess." },
+          { reference: "e53b4", text: "Go west to the Kitchen." },
+        ],
+        value: 2,
+      },
+      fail: {
+        text: "You fail to evade the arrow and take 2 endurance points of damage.",
+        enduranceDeducted: 2,
+        connections: [
+          { reference: "e70ce", text: "Go north to the Library." },
+          { reference: "e54cc", text: "Go south to the Gambling Room." },
+          { reference: "e67d2", text: "Go east to the Hall of Chess." },
+          { reference: "e53b4", text: "Go west to the Kitchen." },
+        ],
+      },
+    },
     npc: {},
   },
   e5f26: {
@@ -596,9 +617,10 @@ const adventure = {
           { reference: "e6b38", text: "Go north to the Study." },
           { reference: "e5e22", text: "Go south to the Dining Room." },
         ],
+        value: 2,
       },
       fail: {
-        text: "You fail to evade the column of flame and take damage.",
+        text: "You fail to evade the column of flame and take 2 endurance points of damage.",
         enduranceDeducted: 2,
         repeat: false,
         connections: [
@@ -719,9 +741,10 @@ const adventure = {
           { reference: "e5e22", text: "Go west to the Dining Room." },
           { reference: "e4f2c", text: "Go south to the Entrance Hall." },
         ],
+        value: 2,
       },
       fail: {
-        text: "You fail to evade the poison darts and take damage.",
+        text: "You fail to evade the poison darts and take 2 endurance points of damage.",
         enduranceDeducted: 2,
         connections: [
           { reference: "e6c64", text: "Go north to the Conservatory." },

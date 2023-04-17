@@ -1,18 +1,29 @@
 // Initialize Game
-let currentEntry = "";
+let currentEntry = startingEntry;
 let entryToShow = {};
 let playerCharacter = {};
 let currentAdventure = JSON.parse(JSON.stringify(adventure));
 let currentOpponent = {};
 
-function startGame(event) {
+function startNewGame(event) {
   currentAdventure = JSON.parse(JSON.stringify(adventure));
   const chosenCharacter = event.target.id;
   playerCharacter = JSON.parse(
     JSON.stringify(availableCharacters[chosenCharacter])
   );
-  renderEntry(startingEntry);
+  renderEntry(currentEntry);
   renderPlayerArea();
+  renderLoadSaveArea("loadSaveArea", true);
+}
+
+function startSavedGame(savedCharacter, savedLocation, savedAdventure) {
+  console.log("Is this the saved location?");
+  console.log(savedLocation);
+  currentAdventure = savedAdventure;
+  playerCharacter = savedCharacter;
+  renderEntry(savedLocation);
+  renderPlayerArea();
+  renderLoadSaveArea("loadSaveArea", true);
 }
 
 // For debugging
@@ -224,4 +235,28 @@ function useItem(event) {
 
 function updateAdventure() {
   currentAdventure[currentEntry] = entryToShow;
+}
+
+function saveGame(characterData, locationData, adventureData) {
+  const savedGame = {
+    character: characterData,
+    location: locationData,
+    adventure: adventureData,
+  };
+
+  localStorage.setItem(adventureTitle, JSON.stringify(savedGame));
+}
+
+function loadGame() {
+  const savedGame = JSON.parse(localStorage.getItem(adventureTitle));
+  if (savedGame) {
+    startSavedGame(
+      savedGame.character,
+      savedGame.location,
+      savedGame.adventure
+    );
+    renderGameLoaded();
+  } else {
+    renderNoGameSaved();
+  }
 }

@@ -68,7 +68,7 @@ function renderIntroduction(introduction, availableCharacters) {
 
   for (const key in availableCharacters) {
     const startGameButton = document.getElementById(key);
-    startGameButton.addEventListener("click", startGame);
+    startGameButton.addEventListener("click", startNewGame);
   }
 }
 
@@ -78,8 +78,8 @@ function renderPlayerArea() {
   const playerStats = generateCharacterSheet(playerCharacter);
   playerCharacterArea.appendChild(playerStats);
 
-  let characterInventoryArea = document.querySelector(
-    "#characterInventoryArea"
+  let characterInventoryArea = document.getElementById(
+    "characterInventoryArea"
   );
 
   if (Object.values(playerCharacter.inventory).length > 0) {
@@ -178,6 +178,9 @@ function renderPlayerArea() {
   const characterAlert = document.getElementById(
     "playerInnerArea" + playerCharacter.name
   );
+
+  const gameButtonArea = document.createElement("p");
+
   const characterButton = document.createElement("button");
 
   characterButton.classList.add("btn");
@@ -187,7 +190,7 @@ function renderPlayerArea() {
   const characterButtonText = document.createTextNode("Restart Adventure");
   characterButton.appendChild(characterButtonText);
 
-  characterAlert.appendChild(characterButton);
+  gameButtonArea.appendChild(characterButton);
 
   const mapButton = document.createElement("button");
 
@@ -199,7 +202,9 @@ function renderPlayerArea() {
   mapButton.appendChild(mapButtonText);
   mapButton.setAttribute("id", "mapButton");
 
-  characterAlert.appendChild(mapButton);
+  gameButtonArea.appendChild(mapButton);
+
+  characterAlert.appendChild(gameButtonArea);
 
   characterButton.addEventListener("click", () => {
     renderIntroduction(introduction, availableCharacters);
@@ -219,6 +224,9 @@ function renderMap() {
 
 function renderEntry(currentEntryId) {
   currentEntry = currentEntryId;
+
+  console.log("currentEntryId");
+  console.log(currentEntryId);
 
   // Clear all areas
   clearDisplayArea(textOutput);
@@ -315,7 +323,7 @@ function renderDetailsModal(event) {
   const modalTitle = document.querySelector(".details-title");
   modalTitle.textContent = title;
 
-  const modalDescription = detailsModal.querySelector(".details-description");
+  const modalDescription = document.querySelector(".details-description");
   modalDescription.textContent = imageDescription;
 }
 
@@ -716,4 +724,80 @@ function renderInventoryFullModal() {
     document.getElementById("inventoryFullModal")
   );
   modalInventoryFull.show();
+}
+
+function renderNoGameSaved() {
+  const detailsModal = new bootstrap.Modal(
+    document.getElementById("detailsModal")
+  );
+
+  const detailsImage = document.getElementById("details-image");
+  detailsImage.src = "img/utilities/no-game-saved.jpg";
+
+  const modalTitle = document.querySelector(".details-title");
+  modalTitle.textContent = "No Saved Game Found!";
+
+  const modalDescription = document.querySelector(".details-description");
+  modalDescription.textContent =
+    "The games are saved in your local storage. No saved game was found. Please note that sometimes your local storage can be cleared by your browser and the saved game will be lost.";
+  detailsModal.show();
+}
+
+function renderGameLoaded() {
+  const detailsModal = new bootstrap.Modal(
+    document.getElementById("detailsModal")
+  );
+
+  const detailsImage = document.getElementById("details-image");
+  detailsImage.src = "img/utilities/game-loaded.jpg";
+
+  const modalTitle = document.querySelector(".details-title");
+  modalTitle.textContent = "Your game was successfully loaded!";
+
+  const modalDescription = document.querySelector(".details-description");
+  modalDescription.textContent =
+    "Your saved game was loaded. You can continue playing from where you left off. Your character, your chracters inventory and your current location will be restored.";
+  detailsModal.show();
+}
+
+function renderLoadSaveArea(areaToAddTo, includeSaveButton) {
+  const loadSaveArea = document.getElementById(areaToAddTo);
+  clearDisplayArea(loadSaveArea);
+
+  const loadButton = document.createElement("button");
+
+  loadButton.classList.add("btn");
+  loadButton.classList.add("btn-sm");
+  loadButton.classList.add("btn-outline-light");
+  loadButton.classList.add("m-1");
+
+  const loadButtonText = document.createTextNode("Load Game");
+  loadButton.appendChild(loadButtonText);
+  loadButton.setAttribute("id", "loadButton");
+  loadButton.setAttribute("data-bs-dismiss", "modal");
+
+  loadSaveArea.appendChild(loadButton);
+
+  loadButton.addEventListener("click", () => {
+    loadGame();
+  });
+
+  if (includeSaveButton) {
+    const saveButton = document.createElement("button");
+
+    saveButton.classList.add("btn");
+    saveButton.classList.add("btn-sm");
+    saveButton.classList.add("btn-outline-light");
+    saveButton.classList.add("m-1");
+
+    const saveButtonText = document.createTextNode("Save Game");
+    saveButton.appendChild(saveButtonText);
+    saveButton.setAttribute("id", "saveButton");
+
+    loadSaveArea.appendChild(saveButton);
+
+    saveButton.addEventListener("click", () => {
+      saveGame(playerCharacter, currentEntry, currentAdventure);
+    });
+  }
 }
