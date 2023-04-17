@@ -13,17 +13,15 @@ function startNewGame(event) {
   );
   renderEntry(currentEntry);
   renderPlayerArea();
-  renderLoadSaveArea("loadSaveArea", true);
+  renderLoadSaveArea(true);
 }
 
 function startSavedGame(savedCharacter, savedLocation, savedAdventure) {
-  console.log("Is this the saved location?");
-  console.log(savedLocation);
   currentAdventure = savedAdventure;
   playerCharacter = savedCharacter;
   renderEntry(savedLocation);
   renderPlayerArea();
-  renderLoadSaveArea("loadSaveArea", true);
+  renderLoadSaveArea(true);
 }
 
 // For debugging

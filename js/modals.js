@@ -71,8 +71,6 @@ function generateStartModal() {
   startModal.appendChild(modalDialog);
 
   document.body.appendChild(startModal);
-
-  renderLoadSaveArea("loadArea", false);
 }
 
 function generateMapModal() {

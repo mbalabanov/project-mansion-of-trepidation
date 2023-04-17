@@ -225,9 +225,6 @@ function renderMap() {
 function renderEntry(currentEntryId) {
   currentEntry = currentEntryId;
 
-  console.log("currentEntryId");
-  console.log(currentEntryId);
-
   // Clear all areas
   clearDisplayArea(textOutput);
   clearDisplayArea(locationTitleArea);
@@ -760,8 +757,8 @@ function renderGameLoaded() {
   detailsModal.show();
 }
 
-function renderLoadSaveArea(areaToAddTo, includeSaveButton) {
-  const loadSaveArea = document.getElementById(areaToAddTo);
+function renderLoadSaveArea(includeSaveButton) {
+  const loadSaveArea = document.getElementById("loadSaveArea");
   clearDisplayArea(loadSaveArea);
 
   const loadButton = document.createElement("button");
