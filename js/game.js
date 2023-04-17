@@ -71,10 +71,16 @@ function opponentDies() {
   clearDisplayArea(encounter);
   clearDisplayArea(choices);
 
+  playerCharacter.experience += currentOpponent.value;
+
   renderInfoNotificationModal(
     "Victory!",
-    "You have defeated your opponent! See the new options to choose from."
+    "You have defeated your opponent! You gain " +
+      currentOpponent.value +
+      " experience points. Also see the new options to choose from."
   );
+
+  renderPlayerArea();
 
   if (currentOpponent.onDeath) {
     currentOpponent.onDeath.forEach((eachOption) => {
@@ -89,41 +95,19 @@ function opponentDies() {
     updateAdventure();
   }
 
-  currentOpponent.name = "";
-  currentOpponent.agility = 0;
-  currentOpponent.endurance = 0;
+  currentOpponent = {};
 }
 
 function playerDies() {
   clearDisplayArea(encounter);
 
-  const modalPlayerDeath = new bootstrap.Modal(
-    document.getElementById("playerDiesModal")
-  );
-
-  const playerDiesTitleArea = document.getElementById("playerDiesTitle");
-  const playerDiesMessageTextArea = document.getElementById(
-    "playerDiesMessageText"
-  );
-
-  clearDisplayArea(playerDiesTitleArea);
-  clearDisplayArea(playerDiesMessageTextArea);
-
-  playerDiesTitleArea.textContent = playerDiesMessage.title;
+  let displayMessage = playerDiesMessage.text;
 
   if (entryToShow.npc.npcId) {
-    playerDiesMessageTextArea.textContent =
-      playerDiesMessage[entryToShow.npc.npcId];
+    displayMessage = playerDiesMessage[entryToShow.npc.npcId];
   }
 
-  playerDiesMessage.text.forEach((messageText) => {
-    const messageTextParagraph = document.createElement("p");
-    const messageTextContent = document.createTextNode(messageText);
-    messageTextParagraph.appendChild(messageTextContent);
-    playerDiesMessageTextArea.appendChild(messageTextParagraph);
-  });
-
-  modalPlayerDeath.show();
+  renderPlayerDiesModal(playerDiesMessage.title, displayMessage);
 }
 
 function rollDie() {
@@ -134,31 +118,7 @@ function fight() {
   const playerDie = rollDie();
   const opponentDie = rollDie();
 
-  const opponentDieArea = document.getElementById("opponentDieArea");
-  const playerDieArea = document.getElementById("playerDieArea");
-
-  const playerDieValue = document.createTextNode(playerDie);
-  const opponentDieValue = document.createTextNode(opponentDie);
-
-  opponentDieArea.removeChild(opponentDieArea.firstChild);
-  playerDieArea.removeChild(playerDieArea.firstChild);
-
-  opponentDieArea.appendChild(opponentDieValue);
-  playerDieArea.appendChild(playerDieValue);
-
-  const opponentEnduranceArea = document.getElementById(
-    "opponentEnduranceArea"
-  );
-
-  const fightResultArea = document.getElementById("fightResult");
-  fightResultArea.classList.add(
-    "text-light",
-    "text-center",
-    "my-2",
-    "p-1",
-    "mx-2",
-    "rounded"
-  );
+  renderDieRolls(playerDie, opponentDie);
 
   if (
     currentOpponent.agility + opponentDie <
@@ -166,19 +126,13 @@ function fight() {
   ) {
     currentOpponent.endurance--;
 
-    fightResultArea.classList.remove("bg-danger");
-    fightResultArea.classList.add("bg-success");
-    fightResultArea.textContent = "You hit your opponent!";
-
-    opponentEnduranceArea.textContent = currentOpponent.endurance;
+    renderFightResult("opponentHit");
+    renderOpponentEnduranceArea(currentOpponent.endurance);
   } else {
     playerCharacter.endurance--;
     renderPlayerArea();
 
-    fightResultArea.classList.remove("bg-success");
-    fightResultArea.classList.add("bg-danger");
-
-    fightResultArea.textContent = "Your opponent hit you!";
+    renderFightResult("playerHit");
   }
 
   if (currentOpponent.endurance <= 0) {
@@ -194,23 +148,22 @@ function getItem(event) {
   const clickedItem = event.target;
   const itemId = clickedItem.getAttribute("data-itemToGet");
   if (Object.values(playerCharacter.inventory).length < 3) {
-    const gottenItem = entryToShow.items[itemId];
-    playerCharacter.inventory[itemId] = gottenItem;
+    playerCharacter.inventory[itemId] = entryToShow.items[itemId];
+    playerCharacter.experience += entryToShow.items[itemId].value;
     delete entryToShow.items[itemId];
     updateAdventure();
     renderPlayerArea();
     renderEntry(currentEntry);
   } else {
-    const modalInventoryFull = new bootstrap.Modal(
-      document.getElementById("inventoryFullModal")
-    );
-    modalInventoryFull.show();
+    renderInventoryFullModal();
   }
 }
 
 function dropItem(event) {
   const clickedItem = event.target;
   const itemId = clickedItem.getAttribute("data-itemToDrop");
+  const itemValue = clickedItem.getAttribute("data-item-value");
+  playerCharacter.experience -= itemValue;
 
   entryToShow.items[itemId] = playerCharacter.inventory[itemId];
 
@@ -226,11 +179,12 @@ function useItem(event) {
   const clickedItem = event.target;
   const itemToUse = clickedItem.getAttribute("data-itemToUse");
   const itemType = clickedItem.getAttribute("data-item-type");
+  const itemValue = clickedItem.getAttribute("data-item-value");
   const relevantReference = clickedItem.getAttribute("data-relevantReference");
 
   if (itemType === "provisions") {
-    if (playerCharacter.endurance + 2 <= playerCharacter.enduranceMax) {
-      playerCharacter.endurance += 2;
+    if (playerCharacter.endurance + itemValue <= playerCharacter.enduranceMax) {
+      playerCharacter.endurance += itemValue;
     } else {
       playerCharacter.endurance = playerCharacter.enduranceMax;
     }
@@ -241,7 +195,9 @@ function useItem(event) {
 
     renderInfoNotificationModal(
       "Yummy!",
-      "You've just eaten the provisions and gained endurance."
+      "You've just eaten the provisions and gained " +
+        itemValue +
+        " endurance points."
     );
   }
 

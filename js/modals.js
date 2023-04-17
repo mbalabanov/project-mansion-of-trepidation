@@ -397,12 +397,13 @@ function generateDetailsModal() {
 function generateCharacterSheet(character) {
   const characterCol = document.createElement("div");
   const characterAlert = document.createElement("div");
-  const playerInventory = document.createElement("div");
+  const characterInventory = document.createElement("div");
   const characterLogoImage = document.createElement("img");
   const characterParagraph = document.createElement("p");
   const characterAgility = document.createElement("span");
   const characterEndurance = document.createElement("span");
   const characterFortune = document.createElement("span");
+  const characterExperience = document.createElement("span");
 
   characterCol.classList.add("col");
   characterAlert.classList.add("alert");
@@ -416,7 +417,6 @@ function generateCharacterSheet(character) {
 
   characterAgility.classList.add("badge");
   characterAgility.classList.add("bg-primary");
-
   const characterAgilityValue = document.createTextNode(character.agility);
   const characterAgilityLabel = document.createTextNode("Agility: ");
   characterAgility.appendChild(characterAgilityLabel);
@@ -424,7 +424,7 @@ function generateCharacterSheet(character) {
 
   characterEndurance.classList.add("badge");
   characterEndurance.classList.add("bg-primary");
-  characterEndurance.classList.add("mx-1");
+  characterEndurance.classList.add("ms-1");
   const characterEnduranceValue = document.createTextNode(character.endurance);
   const characterEnduranceMax = document.createTextNode(character.enduranceMax);
   const characterEnduranceLabel = document.createTextNode("Endurance: ");
@@ -436,22 +436,34 @@ function generateCharacterSheet(character) {
 
   characterFortune.classList.add("badge");
   characterFortune.classList.add("bg-primary");
+  characterFortune.classList.add("ms-1");
   const characterFortuneValue = document.createTextNode(character.fortune);
   const characterFortuneLabel = document.createTextNode("Fortune: ");
   characterFortune.appendChild(characterFortuneLabel);
   characterFortune.appendChild(characterFortuneValue);
 
+  characterExperience.classList.add("badge");
+  characterExperience.classList.add("bg-success");
+  characterExperience.classList.add("ms-1");
+  const characterExperienceValue = document.createTextNode(
+    character.experience
+  );
+  const characterExperienceLabel = document.createTextNode("Experience: ");
+  characterExperience.appendChild(characterExperienceLabel);
+  characterExperience.appendChild(characterExperienceValue);
+
   characterParagraph.appendChild(characterAgility);
   characterParagraph.appendChild(characterEndurance);
   characterParagraph.appendChild(characterFortune);
+  characterParagraph.appendChild(characterExperience);
 
-  playerInventory.setAttribute("id", "playerInventoryArea");
-  playerInventory.classList.add("row");
+  characterInventory.setAttribute("id", "characterInventoryArea");
+  characterInventory.classList.add("row");
 
   characterCol.appendChild(characterAlert);
   characterAlert.appendChild(characterLogoImage);
   characterAlert.appendChild(characterParagraph);
-  characterAlert.appendChild(playerInventory);
+  characterAlert.appendChild(characterInventory);
 
   return characterCol;
 }

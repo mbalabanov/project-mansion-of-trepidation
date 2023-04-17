@@ -78,7 +78,9 @@ function renderPlayerArea() {
   const playerStats = generateCharacterSheet(playerCharacter);
   playerCharacterArea.appendChild(playerStats);
 
-  let playerInventoryArea = document.querySelector("#playerInventoryArea");
+  let characterInventoryArea = document.querySelector(
+    "#characterInventoryArea"
+  );
 
   if (Object.values(playerCharacter.inventory).length > 0) {
     const divRow = document.createElement("div");
@@ -126,9 +128,17 @@ function renderPlayerArea() {
       useButton.id = `useItemButton-${itemKey}`;
       useButton.setAttribute(
         "data-item-type",
-        playerCharacter.inventory[itemKey].itemType
+        playerCharacter.inventory[itemKey].type
+      );
+      useButton.setAttribute(
+        "data-item-value",
+        playerCharacter.inventory[itemKey].value
       );
       useButton.setAttribute("data-itemToUse", itemKey);
+      useButton.setAttribute(
+        "data-itemValue",
+        playerCharacter.inventory[itemKey].value
+      );
       useButton.setAttribute(
         "data-relevantReference",
         playerCharacter.inventory[itemKey].relevantReference
@@ -142,11 +152,15 @@ function renderPlayerArea() {
       dropButton.classList.add("btn", "btn-sm", "btn-outline-danger", "m-1");
       dropButton.id = `dropItemButton-${itemKey}`;
       dropButton.setAttribute("data-itemToDrop", itemKey);
+      dropButton.setAttribute(
+        "data-item-value",
+        playerCharacter.inventory[itemKey].value
+      );
       const dropButtonText = document.createTextNode("Drop");
       dropButton.appendChild(dropButtonText);
       invDiv.appendChild(dropButton);
 
-      playerInventoryArea.appendChild(invDiv);
+      characterInventoryArea.appendChild(invDiv);
     }
 
     for (itemKey in playerCharacter.inventory) {
@@ -158,7 +172,7 @@ function renderPlayerArea() {
       dropItemButton.addEventListener("click", dropItem);
     }
   } else {
-    clearDisplayArea(playerInventoryArea);
+    clearDisplayArea(characterInventoryArea);
   }
 
   const characterAlert = document.getElementById(
@@ -237,12 +251,8 @@ function renderEntry(currentEntryId) {
   }
 
   if (entryToShow.encounter.encounterId) {
-    currentOpponent.name = entryToShow.encounter.name;
-    currentOpponent.agility = entryToShow.encounter.agility;
-    currentOpponent.endurance = entryToShow.encounter.endurance;
-    currentOpponent.onDeath = entryToShow.encounter.onDeath;
-
-    renderEncounter(entryToShow.encounter);
+    currentOpponent = entryToShow.encounter;
+    renderEncounter(currentOpponent);
   }
 
   if (entryToShow.items) {
@@ -369,29 +379,37 @@ function renderEncounter(encounterData) {
     fight();
   };
 
-  const opponentDieSpan = document.createElement("span");
-  opponentDieSpan.id = "opponentDieArea";
-  opponentDieSpan.classList.add(
+  const opponentDieRollSpan = document.createElement("span");
+  opponentDieRollSpan.id = "opponentDieArea";
+  opponentDieRollSpan.classList.add(
     "bg-dark",
     "text-light",
     "py-1",
     "px-2",
     "rounded"
   );
-  opponentDieSpan.textContent = "0";
+  opponentDieRollSpan.textContent = "0";
 
-  const playerDieSpan = document.createElement("span");
-  playerDieSpan.id = "playerDieArea";
-  playerDieSpan.classList.add(
+  const playerDieRollSpan = document.createElement("span");
+  playerDieRollSpan.id = "playerDieArea";
+  playerDieRollSpan.classList.add(
     "bg-secondary",
     "text-light",
     "py-1",
     "px-2",
     "rounded"
   );
-  playerDieSpan.textContent = "0";
+  playerDieRollSpan.textContent = "0";
 
   const fightResultDiv = document.createElement("div");
+  fightResultDiv.classList.add(
+    "text-light",
+    "text-center",
+    "my-2",
+    "p-1",
+    "mx-2",
+    "rounded"
+  );
   fightResultDiv.id = "fightResult";
 
   const fightControl = document.createElement("div");
@@ -401,9 +419,9 @@ function renderEncounter(encounterData) {
   const fightInfo = document.createElement("div");
   fightInfo.classList.add("mt-4");
   fightInfo.appendChild(document.createTextNode("Opponent's die roll: "));
-  fightInfo.appendChild(opponentDieSpan);
+  fightInfo.appendChild(opponentDieRollSpan);
   fightInfo.appendChild(document.createTextNode(" Your die roll: "));
-  fightInfo.appendChild(playerDieSpan);
+  fightInfo.appendChild(playerDieRollSpan);
   fightInfo.appendChild(fightResultDiv);
 
   colDiv3.appendChild(agilityBtn);
@@ -471,6 +489,10 @@ function renderItemOnLocation(itemKey, entryToShow) {
   itemOnLocationCol1ItemButton.classList.add("btn", "btn-info");
   itemOnLocationCol1ItemButton.setAttribute("id", `button-getItem-${itemKey}`);
   itemOnLocationCol1ItemButton.setAttribute("data-itemToGet", itemKey);
+  itemOnLocationCol1ItemButton.setAttribute(
+    "data-itemValue",
+    entryToShow.items[itemKey].value
+  );
   const itemOnLocationCol1ItemButtonText = document.createTextNode("Get Item");
   itemOnLocationCol1ItemButton.appendChild(itemOnLocationCol1ItemButtonText);
   itemOnLocationCol1ItemParagraph.appendChild(itemOnLocationCol1ItemButton);
@@ -584,15 +606,18 @@ function renderNpcEntry(entryToShow) {
   const npcCol1Button1 = document.createElement("button");
   npcCol1Button1.classList.add("btn", "btn-primary");
   npcCol1Button1.setAttribute("id", `npc-${entryToShow.npc.npcId}`);
-  npcCol1Button1.setAttribute("data-entryToGoto", entryToShow.npc.reference);
+  npcCol1Button1.setAttribute("data-entrytogoto", entryToShow.npc.reference);
+  npcCol1Button1.onclick = goToEntry;
   const npcCol1Button1Text = document.createTextNode("Talk");
   npcCol1Button1.appendChild(npcCol1Button1Text);
 
   npcCol1ButtonParagraph.appendChild(npcCol1Button1);
 
   const npcCol1Button2 = document.createElement("button");
-  npcCol1Button2.classList.add("btn", "btn-primary", "mx-1");
+  npcCol1Button2.classList.add("btn", "btn-danger", "mx-1");
   npcCol1Button2.setAttribute("id", `npc-fight-${entryToShow.npc.npcId}`);
+  npcCol1Button2.onclick = playerDies;
+
   const npcCol1Button2Text = document.createTextNode("Fight");
   npcCol1Button2.appendChild(npcCol1Button2Text);
 
@@ -618,16 +643,77 @@ function renderNpcEntry(entryToShow) {
   npcDiv.appendChild(npcRow);
 
   npcArea.appendChild(npcDiv);
-
-  npcCol1Button1.addEventListener("click", () => {
-    goToEntry(entryToShow.npc.reference);
-  });
-
-  npcCol1Button2.addEventListener("click", () => playerDies());
 }
 
 function clearDisplayArea(areaName) {
   while (areaName.firstChild) {
     areaName.removeChild(areaName.firstChild);
   }
+}
+
+function renderFightResult(whoGotHit) {
+  const fightResultArea = document.getElementById("fightResult");
+
+  if (whoGotHit === "opponentHit") {
+    fightResultArea.classList.remove("bg-danger");
+    fightResultArea.classList.add("bg-success");
+    fightResultArea.textContent = "You hit your opponent!";
+  } else if (whoGotHit === "playerHit") {
+    fightResultArea.classList.remove("bg-success");
+    fightResultArea.classList.add("bg-danger");
+    fightResultArea.textContent = "Your opponent hit you!";
+  }
+}
+
+function renderDieRolls(playerDie, opponentDie) {
+  const opponentDieArea = document.getElementById("opponentDieArea");
+  const playerDieArea = document.getElementById("playerDieArea");
+
+  const playerDieValue = document.createTextNode(playerDie);
+  const opponentDieValue = document.createTextNode(opponentDie);
+
+  opponentDieArea.removeChild(opponentDieArea.firstChild);
+  playerDieArea.removeChild(playerDieArea.firstChild);
+
+  opponentDieArea.appendChild(opponentDieValue);
+  playerDieArea.appendChild(playerDieValue);
+}
+
+function renderOpponentEnduranceArea(endurance) {
+  const opponentEnduranceArea = document.getElementById(
+    "opponentEnduranceArea"
+  );
+  opponentEnduranceArea.textContent = endurance;
+}
+
+function renderPlayerDiesModal(title, message) {
+  const modalPlayerDeath = new bootstrap.Modal(
+    document.getElementById("playerDiesModal")
+  );
+
+  const playerDiesTitleArea = document.getElementById("playerDiesTitle");
+  const playerDiesMessageTextArea = document.getElementById(
+    "playerDiesMessageText"
+  );
+
+  clearDisplayArea(playerDiesTitleArea);
+  clearDisplayArea(playerDiesMessageTextArea);
+
+  playerDiesTitleArea.textContent = title;
+
+  message.forEach((messageText) => {
+    const messageTextParagraph = document.createElement("p");
+    const messageTextContent = document.createTextNode(messageText);
+    messageTextParagraph.appendChild(messageTextContent);
+    playerDiesMessageTextArea.appendChild(messageTextParagraph);
+  });
+
+  modalPlayerDeath.show();
+}
+
+function renderInventoryFullModal() {
+  const modalInventoryFull = new bootstrap.Modal(
+    document.getElementById("inventoryFullModal")
+  );
+  modalInventoryFull.show();
 }

@@ -8,6 +8,7 @@ const availableCharacters = {
     endurance: 9,
     enduranceMax: 9,
     fortune: 4,
+    experience: 0,
     inventory: {},
   },
   Devin: {
@@ -19,6 +20,7 @@ const availableCharacters = {
     endurance: 10,
     enduranceMax: 10,
     fortune: 4,
+    experience: 0,
     inventory: {},
   },
 };

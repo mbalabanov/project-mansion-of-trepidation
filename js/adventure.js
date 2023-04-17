@@ -75,7 +75,7 @@ const adventure = {
     items: {
       i21f8: {
         name: "Crystal Key of Ancients",
-        itemType: "tool",
+        type: "tool",
         value: 20,
         description:
           "This Crystal Key of the Ancients is a thing of pure beauty, crafted from a single, flawless piece of crystal that sparkled and glimmered in the light. Its edges were sharp and precise, and as you held it in your hand, you could feel the power and magic that it contained.",
@@ -136,7 +136,7 @@ const adventure = {
     items: {
       i51ft: {
         name: "Pouch of Treasures",
-        itemType: "tool",
+        type: "tool",
         value: 100,
         description:
           "A purple pouch, crafted from rich, supple leather, overflows with gleaming gold coins and sparkling jewels. The treasures within catch the light, casting a tantalizing glow that promises wealth and adventure in a fantastical world.",
@@ -270,7 +270,7 @@ const adventure = {
         "You see a little Pony in the corner of the sanctum gritting its teeth as its muscles start to bulge and bubbles. You hear its bones cracking and snapping. The horse transforms into something else. Its face contorts into a snarling muzzle. Before you no longer stands a mere horse. Instead, you are attacked by a massive smokebelching Blazing Hello Pony.",
       agility: 5,
       endurance: 2,
-      value: 5,
+      value: 8,
       onDeath: [
         { reference: "e6642", text: "Go east to the Inner Sanctum." },
         { reference: "e5b02", text: "Go west to the Laboratory." },
@@ -298,7 +298,7 @@ const adventure = {
     items: {
       p47e0: {
         name: "Bag of Provisions",
-        itemType: "provisions",
+        type: "provisions",
         value: 2,
         description:
           "A worn, leather bag bulges with hearty provisions fit for your adventure: crusty loaves of bread, wedges of aromatic cheese, and thick slices of savory ham, promising nourishment and sustenance for the journey ahead.",
@@ -327,7 +327,7 @@ const adventure = {
       name: "The Bokemin",
       image: "img/locations/image_es1c4.jpg",
       description:
-        "Infront of the oak you see the Bokemin.<br/><br/>Standing scarcely taller than a human child, the Bokemin is a figure of unassuming stature, yet it possesses a presence that belies its size. Its body is stout and compact, built for traversing the forest's undergrowth with ease.",
+        "Infront of the oak you see the Bokemin. Standing scarcely taller than a human child, the Bokemin is a figure of unassuming stature, yet it possesses a presence that belies its size. Its body is stout and compact, built for traversing the forest's undergrowth with ease.",
       reference: "es1c4",
     },
   },
@@ -346,7 +346,7 @@ const adventure = {
     items: {
       a0d1: {
         name: "Dagger of Separation",
-        itemType: "tool",
+        type: "tool",
         value: 20,
         description:
           "The ornate Ancient Dagger gleams with a dark, mysterious allure. Its blade, etched with enigmatic runes, whispers of forgotten power. You realize that you can use this to enter a forbidden realm when you are in the right place.",
@@ -445,7 +445,7 @@ const adventure = {
     items: {
       i42f3: {
         name: "Potion of Healing",
-        itemType: "provisions",
+        type: "provisions",
         value: 10,
         description:
           "The flask with the Potion of Healing is intricately designed, with glowing runes etched into its surface. Its contents are a potion of crushed dragon scales, mermaid tears, mandrake root, and moonflower petals that can reinvigorate you when consumed.",
@@ -530,7 +530,7 @@ const adventure = {
     items: {
       i21f8: {
         name: "Glass of Magnification",
-        itemType: "tool",
+        type: "tool",
         value: 10,
         description:
           "The Magnifying Glass, a mystical glass imbued with the essence of a thousand scrutinizing eyes, unveils hidden secrets and obscure details, empowering its wielder with unparalleled perception and an unerring gaze into the arcane.",
@@ -640,7 +640,7 @@ const adventure = {
     items: {
       p47e1: {
         name: "Bag of Provisions",
-        itemType: "provisions",
+        type: "provisions",
         value: 2,
         description:
           "A worn, leather bag bulges with hearty provisions fit for your adventure: crusty loaves of bread, wedges of aromatic cheese, and thick slices of savory ham, promising nourishment and sustenance for the journey ahead.",
@@ -766,7 +766,7 @@ const adventure = {
     items: {
       i9e1f: {
         name: "Amulet of Stone",
-        itemType: "tool",
+        type: "tool",
         value: 20,
         description:
           "This amulet is an ancient talisman forged from the heart of a fallen mountain. It grants its wearer the ability to open a portal when in the right chamber.",
@@ -853,7 +853,7 @@ const adventure = {
     items: {
       i52e0: {
         name: "Ornate Star Compass",
-        itemType: "tool",
+        type: "tool",
         value: 20,
         description:
           "The exquisite Star Compass, housed in an intricately engraved brass casing, features a delicately balanced magnetic needle at its center. On closer inspection the compass face reveals elegantly scripted cardinal directions and ornate decorative flourishes.",
