@@ -862,7 +862,7 @@ const adventure = {
         addedChoices: [
           {
             reference: "e68f4",
-            text: "Through the Maze to the Secret Cave of Chasms",
+            text: "Through the Maze to the Secret Cave of Chasms (thanks to the Ornate Star Compass)",
           },
         ],
       },
