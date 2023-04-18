@@ -27,10 +27,10 @@ const availableCharacters = {
     name: "Rangu",
     logo: "img/characters/rangu-logo.png",
     description:
-      "You are a fierce yet clumsy fighter with green skin, sharp teeth, and muscular build. You are known for your savagery and skill in combat, wielding weapons such as axes, maces, and swords. You often wear armor made from the hides of beasts and skulls of your enemies, and your hair is usually fashionably unkempt.",
+      "You are a fierce yet clumsy fighter with green skin, sharp teeth, and muscular build. You are known for your savagery and skill in combat, wielding weapons such as axes, maces, and swords. You wear ill-fitting armor made from the hides of beasts and skulls of your enemies, and your hair is usually fashionably unkempt.",
     agility: 3,
-    endurance: 12,
-    enduranceMax: 12,
+    endurance: 14,
+    enduranceMax: 14,
     fortune: 6,
     experience: 0,
     inventory: {},
