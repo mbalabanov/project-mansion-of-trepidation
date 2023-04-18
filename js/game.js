@@ -188,13 +188,16 @@ function useItem(event) {
   const clickedItem = event.target;
   const itemToUse = clickedItem.getAttribute("data-itemToUse");
   const itemType = clickedItem.getAttribute("data-item-type");
-  const itemValue = clickedItem.getAttribute("data-item-value");
+  const itemValue = Number(clickedItem.getAttribute("data-item-value"));
   const relevantReference = clickedItem.getAttribute("data-relevantReference");
 
   if (itemType === "provisions") {
     if (playerCharacter.endurance + itemValue <= playerCharacter.enduranceMax) {
       playerCharacter.endurance += itemValue;
-    } else {
+    } else if (
+      playerCharacter.endurance + itemValue >
+      playerCharacter.enduranceMax
+    ) {
       playerCharacter.endurance = playerCharacter.enduranceMax;
     }
 
@@ -223,6 +226,10 @@ function useItem(event) {
     updateAdventure();
     renderPlayerArea();
     renderEntry(currentEntry);
+    renderInfoNotificationModal(
+      "The " + itemToUse + " is Effective!",
+      "Using the " + itemToUse + " at this location has unlocked new options."
+    );
   } else if (itemType === "tool" && currentEntry !== relevantReference) {
     renderInfoNotificationModal(
       "Oops!",

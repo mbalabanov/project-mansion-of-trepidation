@@ -31,7 +31,7 @@ const introduction = {
     "At the end of each entry you are presented with the options you can choose from.",
     "On your journey you will encounter vile foes, monsters, and demons to fight but also benevolent characters who will help you on your way. You will find items vital to completing your quest and provisions to replenisch you.",
     "Explore each room in the mansion and use the items in the right rooms to defeat Mortacion and find William.",
-    "Choose the character you want to play and embark on your quest through the Mansion of Trepdidation!",
+    "Choose the character you want to play and embark on your quest through the Mansion of Trepidation!",
   ],
 };
 
