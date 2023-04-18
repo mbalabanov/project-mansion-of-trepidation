@@ -25,12 +25,13 @@ const playerDiesMessage = {
 const introduction = {
   title: adventureTitle,
   text: [
-    "Welcome to the 'Mansion of Trepidation', role-playing game. This is a choice-based solo fantasy adventure in the style of the 'Choose Your Own Adventure' and 'Fighting Fantasy' books. Except, you know... not in a book.",
+    "Welcome to the Mansion of Trepidation role-playing game. This is a choice-based solo fantasy adventure in the style of the 'Choose Your Own Adventure' and 'Fighting Fantasy' books.",
     "The necromancer Mortacion has abducted William, your five year old nephew. Mortacion wants to harness William's youthful energy to rejuvinate himself. This would cause William's death.",
     "Armed with your sword, shield and cunning, you have to search Mortacion's mansion and rescue William before it's too late.",
     "At the end of each entry you are presented with the options you can choose from.",
     "On your journey you will encounter vile foes, monsters, and demons to fight but also benevolent characters who will help you on your way. You will find items vital to completing your quest and provisions to replenisch you.",
     "Explore each room in the mansion and use the items in the right rooms to defeat Mortacion and find William.",
+    "Choose the character you want to play and embark on your quest through the Mansion of Trepdidation!",
   ],
 };
 

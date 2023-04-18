@@ -37,7 +37,7 @@ function generateStartModal() {
   const img = document.createElement("img");
   img.src = "";
   img.id = "start-logo";
-  img.classList.add("img-fluid");
+  img.classList.add("img-fluid", "mb-3", "rounded");
   img.alt = "";
 
   const startDesc = document.createElement("div");
@@ -476,7 +476,6 @@ function generateCharacterSheet(character, showDetailsButton) {
 
   characterAlert.appendChild(characterLogoImage);
   characterAlert.appendChild(characterParagraph);
-  characterAlert.appendChild(characterInventory);
 
   if (showDetailsButton) {
     const characterDetailsButton = document.createElement("button");
@@ -494,14 +493,15 @@ function generateCharacterSheet(character, showDetailsButton) {
       "data-bs-description",
       character.description
     );
-    const characterDetailsButtonText = document.createTextNode(
-      character.name + " Details"
-    );
+    const characterDetailsButtonText =
+      document.createTextNode("Character Details");
     characterDetailsButton.appendChild(characterDetailsButtonText);
     characterAlert.appendChild(characterDetailsButton);
 
     characterAlert.addEventListener("click", renderDetailsModal);
   }
+
+  characterAlert.appendChild(characterInventory);
 
   characterCol.appendChild(characterAlert);
 
