@@ -11,7 +11,7 @@ function startNewGame(event) {
   playerCharacter = JSON.parse(
     JSON.stringify(availableCharacters[chosenCharacter])
   );
-  renderEntry(currentEntry);
+  renderEntry(startingEntry);
   renderPlayerArea();
   renderLoadSaveArea("loadSaveArea", true);
 }

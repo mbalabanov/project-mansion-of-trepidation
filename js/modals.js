@@ -497,8 +497,6 @@ function generateCharacterSheet(character, showDetailsButton) {
       document.createTextNode("Character Details");
     characterDetailsButton.appendChild(characterDetailsButtonText);
     characterAlert.appendChild(characterDetailsButton);
-
-    characterAlert.addEventListener("click", renderDetailsModal);
   }
 
   characterAlert.appendChild(characterInventory);

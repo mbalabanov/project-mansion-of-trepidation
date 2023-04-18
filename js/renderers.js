@@ -66,9 +66,15 @@ function renderIntroduction(introduction, availableCharacters) {
       characterButton.appendChild(characterButtonName);
       characterButton.dataset.bsDismiss = "modal";
       characterButton.setAttribute("id", key);
-      characterButton.addEventListener("click", startNewGame);
 
       characterAlert.appendChild(characterButton);
+    }
+  }
+
+  for (const key in availableCharacters) {
+    if (availableCharacters.hasOwnProperty(key)) {
+      const characterSelectButton = document.getElementById(key);
+      characterSelectButton.addEventListener("click", startNewGame);
     }
   }
 
@@ -315,8 +321,6 @@ function renderOptions(text, reference) {
 }
 
 function renderDetailsModal(event) {
-  console.log("event target");
-  console.dir(event, { depth: null });
   const button = event.relatedTarget;
   const imagePath = button.getAttribute("data-bs-imagePath");
   const title = button.getAttribute("data-bs-title");
@@ -372,16 +376,16 @@ function renderEncounter(encounterData) {
   colDiv3.classList.add("m-1");
   colDiv3.classList.add("text-center");
 
-  const agilityBtn = document.createElement("button");
-  agilityBtn.classList.add("btn", "btn-outline-danger", "me-2");
+  const agilityBtn = document.createElement("span");
+  agilityBtn.classList.add("badge", "bg-danger", "me-2");
   agilityBtn.textContent = "Agility: " + encounterData.agility;
 
   const enduranceSpan = document.createElement("span");
   enduranceSpan.id = "opponentEnduranceArea";
   enduranceSpan.textContent = encounterData.endurance;
 
-  const enduranceBtn = document.createElement("button");
-  enduranceBtn.classList.add("btn", "btn-outline-danger", "me-2");
+  const enduranceBtn = document.createElement("span");
+  enduranceBtn.classList.add("badge", "bg-danger", "me-2");
   enduranceBtn.textContent = "Endurance: ";
   enduranceBtn.appendChild(enduranceSpan);
 
@@ -761,7 +765,7 @@ function renderGameLoaded() {
 
   const modalDescription = document.querySelector(".details-description");
   modalDescription.textContent =
-    "Your saved game was loaded. You can continue playing from where you left off. Your character, your chracter's inventory and your current location will be restored.";
+    "Your saved game was loaded. You can continue playing from where you left off. Your character, your character's inventory and your current location will be restored.";
   detailsModal.show();
 }
 
@@ -778,7 +782,7 @@ function renderGameSaved() {
 
   const modalDescription = document.querySelector(".details-description");
   modalDescription.textContent =
-    "Your game was successfully saved. Your character, your chracter's inventory and your current location can be restored in future, so that you can continue playing from where you left off. Please note that this uses the browser's local storage. You will need to use the same browser on the same device to restore you game.";
+    "Your game was successfully saved. Your character, your character's inventory and your current location can be restored in future, so that you can continue playing from where you left off. Please note that this uses the browser's local storage. You will need to use the same browser on the same device to restore you game.";
   detailsModal.show();
 }
 

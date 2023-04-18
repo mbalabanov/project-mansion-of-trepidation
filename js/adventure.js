@@ -77,7 +77,7 @@ const adventure = {
     encounter: {},
     items: {
       i21f8: {
-        name: "Crystal Key of Ancients",
+        name: "Crystal Key",
         type: "tool",
         value: 20,
         description:
@@ -348,7 +348,7 @@ const adventure = {
     encounter: {},
     items: {
       a0d1: {
-        name: "Dagger of Separation",
+        name: "Jewelled Dagger",
         type: "tool",
         value: 20,
         description:
@@ -376,7 +376,7 @@ const adventure = {
     connections: [
       {
         reference: "e7434",
-        text: "Go through the stables into the Holding Pens inside the mansion.",
+        text: "Go through the stables into the Holding Pens in the mansion.",
       },
       { reference: "e6048", text: "Go west along trail." },
     ],
@@ -450,7 +450,7 @@ const adventure = {
     encounter: {},
     items: {
       i42f3: {
-        name: "Potion of Healing",
+        name: "Healing Potion",
         type: "provisions",
         value: 10,
         description:
@@ -553,7 +553,7 @@ const adventure = {
     encounter: {},
     items: {
       i21f8: {
-        name: "Glass of Magnification",
+        name: "Magnifying Glass",
         type: "tool",
         value: 10,
         description:
@@ -594,7 +594,7 @@ const adventure = {
       "Despite the air of learnedness and intellectualism that pervades the space, there's a sense of dread and uneasiness about it. The forbidden knowledge that Mortacion has amassed over the years seems to have been warped the room itself.",
     ],
     specialText: [
-      "You see an old leather-bound book open on a table. It's covered in dust and cobwebs, but you can still make out the title History of Necromancy. If you have a Glass of Magnification, you can read the arcane language in the book.",
+      "You see an old leather-bound book open on a table. It's covered in dust and cobwebs, but you can still make out the title History of Necromancy. If you have a mystical Magnifying Glass, you can read the arcane language in the book.",
     ],
     connections: [
       { reference: "e5b02", text: "Go north to the Laboratory." },
@@ -771,7 +771,7 @@ const adventure = {
       "These fantastical flora seem to exist beyond the confines of time and space, pulsating with an energy that resonates with the very essence of the universe. The translucent leaves and iridescent blooms emit a soft, hypnotic glow, casting ephemeral patterns of light and shadow in a mesmerizing dance.",
     ],
     specialText: [
-      "Amidst the swirling eddies of quantum energy, these alien plants intertwine and float gracefully, you see that a Dagger of Separation would let you magically cut through the unreality of this realm to your final destination.",
+      "Amidst the swirling eddies of quantum energy, these alien plants intertwine and float gracefully, you see that a Jewelled Dagger would let you magically cut through the unreality of this realm to your final destination.",
     ],
     connections: [
       {
@@ -883,7 +883,7 @@ const adventure = {
     encounter: {},
     items: {
       i52e0: {
-        name: "Ornate Star Compass",
+        name: "Star Compass",
         type: "tool",
         value: 20,
         description:
@@ -893,7 +893,7 @@ const adventure = {
         addedChoices: [
           {
             reference: "e68f4",
-            text: "Through the Maze to the Secret Cave of Chasms (thanks to the Ornate Star Compass)",
+            text: "Through the Maze to the Secret Cave of Chasms (thanks to the Star Compass)",
           },
         ],
       },
@@ -904,10 +904,10 @@ const adventure = {
   ebo13: {
     title: "History of Necromancy",
     text: [
-      "You brush aside the cobwebs and hold the book up to the light. The pages are yellowed and brittle, and the ink is faded and smudged, but thanks to the Glass of Magnification you understand the words. Particularly one section peaks your interest:",
+      "You brush aside the cobwebs and hold the book up to the light. The pages are yellowed and brittle, and the ink is faded and smudged, but thanks to the Magnifying Glass you understand the words. Particularly one section peaks your interest:",
       "'Mortacion, the notorious necromancer, is a figure shrouded in mystery and dark magic. His seemingly infinite power has allowed him to connect different planes of existence and dimensions, making his mansion a nexus of the multiverse. The estate itself is a sprawling, sinister structure, with an ominous presence that hangs heavy in the air. Its walls are adorned with intricate carvings and arcane symbols that pulse with an eerie energy, hinting at the unspeakable power contained within.'",
       "'The mansion is labyrinthine in nature, with its corridors twisting and turning, defying the very laws of physics. One room holds the gateway to another dimension, filled with otherworldly artifacts and creatures that would send shivers down the spine of even the most hardened adventurer: Mortacion's Altar Room'",
-      "'There is only one way into the Altar Room: through the Inner Sanctum. It's window is no mere opening into the outside, but a gateway to another plane of existence. It can only be entered using three objects: the Amulet of Stone, the Dagger of Separation, and the Crystal Key of the Ancients. They are hidden in different chambers in Mortacion's mansion.'",
+      "'There is only one way into the Altar Room: through the Inner Sanctum. It's window is no mere opening into the outside, but a gateway to another plane of existence. It can only be entered using three objects: the Amulet of Stone, the Jewelled Dagger, and the Crystal Key of the Ancients. They are hidden in different chambers in Mortacion's mansion.'",
     ],
     connections: [
       { reference: "e6b38", text: "Go north to the Study." },
@@ -926,7 +926,7 @@ const adventure = {
       "When she finishes her song, she bows gracefully, her eyes twinkling with a mischievous glint. You pet her tenderly and tell her about your quest to find William. She looks you deeply in the eyes and decides to help you by telling you the secret location of one of the objects you need to complete your quest.",
     ],
     specialText: [
-      "'Mortacion is hidden in his Altar Room. I cannot tell you how to get there, but I do know that you will need to seek out the Dagger of Separation. It is hidden in the Gambling Room, west of the Grand Entrance Hall. I wish you good fortune and bid you godspeed on your quest to find your nephew.'",
+      "'Mortacion is hidden in his Altar Room. I cannot tell you how to get there, but I do know that you will need to seek out the Jewelled Dagger. It is hidden in the Gambling Room, west of the Grand Entrance Hall. I wish you good fortune and bid you godspeed on your quest to find your nephew.'",
     ],
     connections: [{ reference: "e59d6", text: "Focus back on the Stables" }],
     encounter: {},
