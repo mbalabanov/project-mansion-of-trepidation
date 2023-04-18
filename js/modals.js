@@ -1,3 +1,5 @@
+// These functions generate the HTML for the modals used in the game
+
 function generateStartModal() {
   const startModal = document.createElement("div");
   startModal.classList.add("modal", "fade");
@@ -406,7 +408,7 @@ function generateDetailsModal() {
   document.body.appendChild(modal);
 }
 
-function generateCharacterSheet(character) {
+function generateCharacterSheet(character, showDetailsButton) {
   const characterCol = document.createElement("div");
   const characterAlert = document.createElement("div");
   const characterInventory = document.createElement("div");
@@ -472,10 +474,36 @@ function generateCharacterSheet(character) {
   characterInventory.setAttribute("id", "characterInventoryArea");
   characterInventory.classList.add("row");
 
-  characterCol.appendChild(characterAlert);
   characterAlert.appendChild(characterLogoImage);
   characterAlert.appendChild(characterParagraph);
   characterAlert.appendChild(characterInventory);
+
+  if (showDetailsButton) {
+    const characterDetailsButton = document.createElement("button");
+    characterDetailsButton.classList.add("btn");
+    characterDetailsButton.classList.add("btn-outline-secondary");
+    characterDetailsButton.classList.add("mb-2");
+    characterDetailsButton.setAttribute("data-bs-toggle", "modal");
+    characterDetailsButton.setAttribute("data-bs-target", "#detailsModal");
+    characterDetailsButton.setAttribute("data-bs-imagePath", character.logo);
+    characterDetailsButton.setAttribute(
+      "data-bs-title",
+      "You are " + character.name
+    );
+    characterDetailsButton.setAttribute(
+      "data-bs-description",
+      character.description
+    );
+    const characterDetailsButtonText = document.createTextNode(
+      character.name + " Details"
+    );
+    characterDetailsButton.appendChild(characterDetailsButtonText);
+    characterAlert.appendChild(characterDetailsButton);
+
+    characterAlert.addEventListener("click", renderDetailsModal);
+  }
+
+  characterCol.appendChild(characterAlert);
 
   return characterCol;
 }

@@ -1,3 +1,5 @@
+// This is the data of the actual adventure with all the rooms, items, encounters, etc.
+
 const adventureTitle = "Mansion of Trepidation";
 const adventureLogo = "img/utilities/mansion-logo.png";
 const adventureMap = "img/utilities/mansion-map.svg";
@@ -84,7 +86,7 @@ const adventure = {
         addedChoices: [
           {
             reference: "efi33",
-            text: "Enter the portal formed by the algae.",
+            text: "Enter the portal formed by the algae (thanks to the Crystal Key).",
           },
         ],
       },
@@ -141,7 +143,7 @@ const adventure = {
         description:
           "A purple pouch, crafted from rich, supple leather, overflows with gleaming gold coins and sparkling jewels. The treasures within catch the light, casting a tantalizing glow that promises wealth and adventure in a fantastical world.",
         image: "img/items/pouch-of-treasures.jpg",
-        relevantReference: "",
+        relevantReference: "x",
         addedChoices: [],
       },
     },
@@ -355,7 +357,7 @@ const adventure = {
         addedChoices: [
           {
             reference: "e77e0",
-            text: "Float to your final destination.",
+            text: "Float to your final destination (thanks to the Dagger).",
           },
         ],
       },
@@ -557,7 +559,12 @@ const adventure = {
           "The Magnifying Glass, a mystical glass imbued with the essence of a thousand scrutinizing eyes, unveils hidden secrets and obscure details, empowering its wielder with unparalleled perception and an unerring gaze into the arcane.",
         image: "img/items/magnifying-glass.jpg",
         relevantReference: "e6b38",
-        addedChoices: [{ reference: "ebo13", text: "Read the book." }],
+        addedChoices: [
+          {
+            reference: "ebo13",
+            text: "Read the book (thanks to the Magnifying Glass).",
+          },
+        ],
       },
     },
     incident: {},
@@ -798,7 +805,7 @@ const adventure = {
         addedChoices: [
           {
             reference: "efi32",
-            text: "Traverse through the window.",
+            text: "Traverse through the window (thanks to the Amulet).",
           },
         ],
       },

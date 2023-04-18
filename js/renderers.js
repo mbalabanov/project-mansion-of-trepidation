@@ -9,6 +9,7 @@ let locationTitleArea = document.getElementById("locationTitle");
 let locationImage = document.getElementById("locationImage");
 let showCurrentEntry = document.getElementById("currentEntry");
 
+// Start Game Renderers
 function renderIntroduction(introduction, availableCharacters) {
   const detailsModal = document.getElementById("detailsModal");
   detailsModal.addEventListener("show.bs.modal", renderDetailsModal);
@@ -42,7 +43,10 @@ function renderIntroduction(introduction, availableCharacters) {
 
   for (const key in availableCharacters) {
     if (availableCharacters.hasOwnProperty(key)) {
-      const characterSheet = generateCharacterSheet(availableCharacters[key]);
+      const characterSheet = generateCharacterSheet(
+        availableCharacters[key],
+        false
+      );
       chooseCharacterArea.appendChild(characterSheet);
       introductionModal.show();
 
@@ -62,20 +66,22 @@ function renderIntroduction(introduction, availableCharacters) {
       characterButton.appendChild(characterButtonName);
       characterButton.dataset.bsDismiss = "modal";
       characterButton.setAttribute("id", key);
+      characterButton.addEventListener("click", startNewGame);
+
       characterAlert.appendChild(characterButton);
     }
   }
 
-  for (const key in availableCharacters) {
-    const startGameButton = document.getElementById(key);
-    startGameButton.addEventListener("click", startNewGame);
+  const checkForSavedGame = JSON.parse(localStorage.getItem(adventureTitle));
+  if (checkForSavedGame) {
+    renderLoadSaveArea("loadArea", false);
   }
 }
 
 function renderPlayerArea() {
   clearDisplayArea(playerCharacterArea);
 
-  const playerStats = generateCharacterSheet(playerCharacter);
+  const playerStats = generateCharacterSheet(playerCharacter, true);
   playerCharacterArea.appendChild(playerStats);
 
   let characterInventoryArea = document.getElementById(
@@ -309,6 +315,8 @@ function renderOptions(text, reference) {
 }
 
 function renderDetailsModal(event) {
+  console.log("event target");
+  console.dir(event, { depth: null });
   const button = event.relatedTarget;
   const imagePath = button.getAttribute("data-bs-imagePath");
   const title = button.getAttribute("data-bs-title");
@@ -753,13 +761,32 @@ function renderGameLoaded() {
 
   const modalDescription = document.querySelector(".details-description");
   modalDescription.textContent =
-    "Your saved game was loaded. You can continue playing from where you left off. Your character, your chracters inventory and your current location will be restored.";
+    "Your saved game was loaded. You can continue playing from where you left off. Your character, your chracter's inventory and your current location will be restored.";
   detailsModal.show();
 }
 
-function renderLoadSaveArea(includeSaveButton) {
-  const loadSaveArea = document.getElementById("loadSaveArea");
-  clearDisplayArea(loadSaveArea);
+function renderGameSaved() {
+  const detailsModal = new bootstrap.Modal(
+    document.getElementById("detailsModal")
+  );
+
+  const detailsImage = document.getElementById("details-image");
+  detailsImage.src = "img/utilities/game-saved.jpg";
+
+  const modalTitle = document.querySelector(".details-title");
+  modalTitle.textContent = "Your game was successfully saved!";
+
+  const modalDescription = document.querySelector(".details-description");
+  modalDescription.textContent =
+    "Your game was successfully saved. Your character, your chracter's inventory and your current location can be restored in future, so that you can continue playing from where you left off. Please note that this uses the browser's local storage. You will need to use the same browser on the same device to restore you game.";
+  detailsModal.show();
+}
+
+function renderLoadSaveArea(areaName, includeSaveButton) {
+  const loadSaveArea = document.getElementById(areaName);
+  if (loadSaveArea) {
+    clearDisplayArea(loadSaveArea);
+  }
 
   const loadButton = document.createElement("button");
 

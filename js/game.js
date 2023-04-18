@@ -13,7 +13,7 @@ function startNewGame(event) {
   );
   renderEntry(currentEntry);
   renderPlayerArea();
-  renderLoadSaveArea(true);
+  renderLoadSaveArea("loadSaveArea", true);
 }
 
 function startSavedGame(savedCharacter, savedLocation, savedAdventure) {
@@ -21,7 +21,7 @@ function startSavedGame(savedCharacter, savedLocation, savedAdventure) {
   playerCharacter = savedCharacter;
   renderEntry(savedLocation);
   renderPlayerArea();
-  renderLoadSaveArea(true);
+  renderLoadSaveArea("loadSaveArea", true);
 }
 
 // For debugging
@@ -204,7 +204,7 @@ function useItem(event) {
 
     renderInfoNotificationModal(
       "Yummy!",
-      "You've just eaten the provisions and gained " +
+      "You've just eaten the provisions and gained up to " +
         itemValue +
         " endurance points."
     );
@@ -226,7 +226,9 @@ function useItem(event) {
   } else if (itemType === "tool" && currentEntry !== relevantReference) {
     renderInfoNotificationModal(
       "Oops!",
-      "This is not the right location to use this item."
+      "This is not the right location to use this item. You might want to try again at this location: " +
+        currentAdventure[relevantReference].title +
+        "."
     );
   }
 }
@@ -243,6 +245,7 @@ function saveGame(characterData, locationData, adventureData) {
   };
 
   localStorage.setItem(adventureTitle, JSON.stringify(savedGame));
+  renderGameSaved();
 }
 
 function loadGame() {
