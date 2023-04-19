@@ -29,7 +29,7 @@ const introduction = {
     "The necromancer Mortacion has abducted William, your five year old nephew. Mortacion wants to harness William's youthful energy to rejuvinate himself. This would cause William's death.",
     "Armed with your sword, shield and cunning, you have to search Mortacion's mansion and rescue William before it's too late.",
     "At the end of each entry you are presented with the options you can choose from.",
-    "On your journey you will encounter vile foes, monsters, and demons to fight but also benevolent characters who will help you on your way. You will find items vital to completing your quest and provisions to replenisch you.",
+    "On your journey you will encounter vile foes, monsters, and demons to fight but also benevolent characters who will help you on your way. You will find items vital to completing your quest and provisions to replenish you.",
     "Explore each room in the mansion and use the items in the right rooms to defeat Mortacion and find William.",
   ],
 };
