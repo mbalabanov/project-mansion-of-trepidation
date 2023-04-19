@@ -854,10 +854,26 @@ function renderInformationModal() {
   detailsImage.src = adventureLogo;
 
   const modalTitle = document.querySelector(".details-title");
-  modalTitle.textContent = "About the Adventure '" + adventureTitle + "'";
+  modalTitle.textContent = "About '" + adventureTitle + "'";
 
   const modalDescription = document.querySelector(".details-description");
-  informationDetails.forEach((informationLine) => {
+  clearDisplayArea(modalDescription);
+  const creditsLineDiv = document.createElement("div");
+  creditsLineDiv.classList.add("alert", "alert-primary");
+  const creditsLineParagraph1 = document.createElement("p");
+  const creditsLineParagraph2 = document.createElement("p");
+  const creditsLineContent1 = document.createTextNode(
+    "Programmed by Marin Balabanov in JavaScript and Bootstrap 5."
+  );
+  const creditsLineContent2 = document.createTextNode(
+    "Artwork generated using Bing Creator, Midjourney AI and ArtText 4 ."
+  );
+  creditsLineParagraph1.appendChild(creditsLineContent1);
+  creditsLineParagraph2.appendChild(creditsLineContent2);
+  creditsLineDiv.appendChild(creditsLineParagraph1);
+  creditsLineDiv.appendChild(creditsLineParagraph2);
+  modalDescription.appendChild(creditsLineDiv);
+  introduction.text.forEach((informationLine) => {
     const informationLineParagraph = document.createElement("p");
     const informationLineContent = document.createTextNode(informationLine);
     informationLineParagraph.appendChild(informationLineContent);

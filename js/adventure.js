@@ -31,16 +31,8 @@ const introduction = {
     "At the end of each entry you are presented with the options you can choose from.",
     "On your journey you will encounter vile foes, monsters, and demons to fight but also benevolent characters who will help you on your way. You will find items vital to completing your quest and provisions to replenisch you.",
     "Explore each room in the mansion and use the items in the right rooms to defeat Mortacion and find William.",
-    "Choose the character you want to play and embark on your quest through the Mansion of Trepidation!",
   ],
 };
-
-const informationDetails = [
-  "Donec sed odio operae, eu vulputate felis rhoncus. Hi omnes lingua, institutis, legibus inter se differunt. Paullum deliquit, ponderibus modulisque suis ratio utitur. Curabitur est gravida et libero vitae dictum. Fictum, deserunt mollit anim laborum astutumque! Praeterea iter est quasdam res quas ex communi.",
-  "Quae vero auctorem tractata ab fiducia dicuntur. Phasellus laoreet lorem vel dolor tempus vehicula. Gallia est omnis divisa in partes tres, quarum.",
-  "Quisque placerat facilisis egestas cillum dolore. A communi observantia non est recedendum. Nec dubitamus multa iter quae et nos invenerat. Sed haec quis possit intrepidus aestimare tellus.",
-  "Curabitur blandit tempus ardua ridiculus sed magna. Ullamco laboris nisi ut aliquid ex ea commodi consequat. Non equidem invideo, miror magis posuere velit aliquet. Nihilne te nocturnum praesidium Palati, nihil urbis vigiliae. Ut enim ad minim veniam, quis nostrud exercitation.",
-];
 
 const adventure = {
   e71f0: {
