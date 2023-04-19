@@ -438,7 +438,7 @@ function generateCharacterSheet(character, showDetailsButton) {
 
   characterEndurance.classList.add("badge");
   characterEndurance.classList.add("bg-primary");
-  characterEndurance.classList.add("ms-1");
+  characterEndurance.classList.add("m-1");
   const characterEnduranceValue = document.createTextNode(character.endurance);
   const characterEnduranceMax = document.createTextNode(character.enduranceMax);
   const characterEnduranceLabel = document.createTextNode("Endurance: ");
@@ -450,7 +450,7 @@ function generateCharacterSheet(character, showDetailsButton) {
 
   characterFortune.classList.add("badge");
   characterFortune.classList.add("bg-primary");
-  characterFortune.classList.add("ms-1");
+  characterFortune.classList.add("m-1");
   const characterFortuneValue = document.createTextNode(character.fortune);
   const characterFortuneLabel = document.createTextNode("Fortune: ");
   characterFortune.appendChild(characterFortuneLabel);
@@ -458,7 +458,7 @@ function generateCharacterSheet(character, showDetailsButton) {
 
   characterExperience.classList.add("badge");
   characterExperience.classList.add("bg-success");
-  characterExperience.classList.add("ms-1");
+  characterExperience.classList.add("m-1");
   const characterExperienceValue = document.createTextNode(
     character.experience
   );

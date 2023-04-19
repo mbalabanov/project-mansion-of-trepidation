@@ -786,26 +786,27 @@ function renderGameSaved() {
   detailsModal.show();
 }
 
-function renderLoadSaveArea(areaName, includeSaveButton) {
+function renderLoadSaveArea(areaName, includeInfoAndSaveButton) {
   const loadSaveArea = document.getElementById(areaName);
   if (loadSaveArea) {
     clearDisplayArea(loadSaveArea);
   }
+  if (includeInfoAndSaveButton) {
+    const infoButton = document.createElement("button");
 
-  const infoButton = document.createElement("button");
+    infoButton.classList.add("btn");
+    infoButton.classList.add("btn-sm");
+    infoButton.classList.add("btn-outline-light");
+    infoButton.classList.add("m-1");
 
-  infoButton.classList.add("btn");
-  infoButton.classList.add("btn-sm");
-  infoButton.classList.add("btn-outline-light");
-  infoButton.classList.add("m-1");
+    const infoButtonText = document.createTextNode("About Game");
+    infoButton.appendChild(infoButtonText);
+    infoButton.setAttribute("id", "infoButton");
 
-  const infoButtonText = document.createTextNode("About Game");
-  infoButton.appendChild(infoButtonText);
-  infoButton.setAttribute("id", "infoButton");
+    loadSaveArea.appendChild(infoButton);
 
-  loadSaveArea.appendChild(infoButton);
-
-  infoButton.addEventListener("click", renderInformationModal);
+    infoButton.addEventListener("click", renderInformationModal);
+  }
 
   const loadButton = document.createElement("button");
 
@@ -825,7 +826,7 @@ function renderLoadSaveArea(areaName, includeSaveButton) {
     loadGame();
   });
 
-  if (includeSaveButton) {
+  if (includeInfoAndSaveButton) {
     const saveButton = document.createElement("button");
 
     saveButton.classList.add("btn");
