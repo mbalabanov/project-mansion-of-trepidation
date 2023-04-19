@@ -24,12 +24,6 @@ function startSavedGame(savedCharacter, savedLocation, savedAdventure) {
   renderLoadSaveArea("loadSaveArea", true);
 }
 
-// For debugging
-function jumpToEntryId() {
-  const entryId = document.querySelector("#entryId").value;
-  renderEntry(entryId);
-}
-
 function goToEntry(event) {
   const optionLink = event.target;
   const entryId = optionLink.getAttribute("data-entrytogoto");
