@@ -1,7 +1,7 @@
 // This is the data of the actual adventure with all the rooms, items, encounters, etc.
 
 const adventureTitle = "Mansion of Trepidation";
-const adventureLogo = "img/utilities/mansion-logo.png";
+const adventureLogo = "img/utilities/mansion-logo-3d.jpg";
 const adventureMap = "img/utilities/mansion-map.svg";
 const startingEntry = "e8f2c";
 
@@ -34,6 +34,13 @@ const introduction = {
     "Choose the character you want to play and embark on your quest through the Mansion of Trepidation!",
   ],
 };
+
+const informationDetails = [
+  "Donec sed odio operae, eu vulputate felis rhoncus. Hi omnes lingua, institutis, legibus inter se differunt. Paullum deliquit, ponderibus modulisque suis ratio utitur. Curabitur est gravida et libero vitae dictum. Fictum, deserunt mollit anim laborum astutumque! Praeterea iter est quasdam res quas ex communi.",
+  "Quae vero auctorem tractata ab fiducia dicuntur. Phasellus laoreet lorem vel dolor tempus vehicula. Gallia est omnis divisa in partes tres, quarum.",
+  "Quisque placerat facilisis egestas cillum dolore. A communi observantia non est recedendum. Nec dubitamus multa iter quae et nos invenerat. Sed haec quis possit intrepidus aestimare tellus.",
+  "Curabitur blandit tempus ardua ridiculus sed magna. Ullamco laboris nisi ut aliquid ex ea commodi consequat. Non equidem invideo, miror magis posuere velit aliquet. Nihilne te nocturnum praesidium Palati, nihil urbis vigiliae. Ut enim ad minim veniam, quis nostrud exercitation.",
+];
 
 const adventure = {
   e71f0: {
