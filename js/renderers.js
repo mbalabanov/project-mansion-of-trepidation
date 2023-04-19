@@ -792,6 +792,21 @@ function renderLoadSaveArea(areaName, includeSaveButton) {
     clearDisplayArea(loadSaveArea);
   }
 
+  const infoButton = document.createElement("button");
+
+  infoButton.classList.add("btn");
+  infoButton.classList.add("btn-sm");
+  infoButton.classList.add("btn-outline-light");
+  infoButton.classList.add("m-1");
+
+  const infoButtonText = document.createTextNode("About Game");
+  infoButton.appendChild(infoButtonText);
+  infoButton.setAttribute("id", "infoButton");
+
+  loadSaveArea.appendChild(infoButton);
+
+  infoButton.addEventListener("click", renderInformationModal);
+
   const loadButton = document.createElement("button");
 
   loadButton.classList.add("btn");
@@ -828,4 +843,26 @@ function renderLoadSaveArea(areaName, includeSaveButton) {
       saveGame(playerCharacter, currentEntry, currentAdventure);
     });
   }
+}
+
+function renderInformationModal() {
+  const detailsModal = new bootstrap.Modal(
+    document.getElementById("detailsModal")
+  );
+
+  const detailsImage = document.getElementById("details-image");
+  detailsImage.src = adventureLogo;
+
+  const modalTitle = document.querySelector(".details-title");
+  modalTitle.textContent = "About the Adventure '" + adventureTitle + "'";
+
+  const modalDescription = document.querySelector(".details-description");
+  informationDetails.forEach((informationLine) => {
+    const informationLineParagraph = document.createElement("p");
+    const informationLineContent = document.createTextNode(informationLine);
+    informationLineParagraph.appendChild(informationLineContent);
+    modalDescription.appendChild(informationLineParagraph);
+  });
+
+  detailsModal.show();
 }
