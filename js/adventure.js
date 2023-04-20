@@ -210,12 +210,10 @@ const adventure = {
       "The sinister manor is a place of darkness and danger, all crafted by Mortacion's magic over the centuries from the bones of his helpless victims.",
       "You are ready to embark on your quest to find William.",
     ],
-    description:
-      "Mortacion's mansion looms before you like a dark and foreboding presence. Its tall spires and steeply pitched roofs silhouetted against the moonlit sky. The building's facade is covered in ivy and other creeping vines, which seem to writhe and twist in the breeze, as though they are alive. The windows of the mansion are dark and empty, like the eyes of some monstrous creature, and the front door is massive and imposing, with intricate carvings and ornate brass handles that seem to beckon you closer, even as they warn you away.",
     connections: [
       {
-        text: "Enter through the main entrance.",
         reference: "e4f2c",
+        text: "Enter through the main entrance.",
       },
       {
         reference: "e6048",
