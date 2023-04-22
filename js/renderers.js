@@ -1,3 +1,13 @@
+// Initialize Audio Elements
+const testRollAudio = new Audio("audio/die_roll.mp3");
+const tadaAudio = new Audio("audio/tada.mp3");
+const changedEntryAudio = new Audio("audio/swing.mp3");
+const successAudio = new Audio("audio/success.mp3");
+const fightSuccessAudio = new Audio("audio/roll_success.mp3");
+const fightFailAudio = new Audio("audio/roll_fail.mp3");
+const playerDiesAudio = new Audio("audio/fail.mp3");
+const infoAudio = new Audio("audio/soft_bleep.mp3");
+
 // Initialize DOM Elements
 let textOutput = document.getElementById("textOutput");
 let encounter = document.getElementById("encounter");
@@ -11,8 +21,7 @@ let showCurrentEntry = document.getElementById("currentEntry");
 
 // Start Game Renderers
 function renderIntroduction(introduction, availableCharacters) {
-  const introductionAudio = new Audio("audio/tada.mp3");
-  introductionAudio.play();
+  tadaAudio.play();
 
   const detailsModal = document.getElementById("detailsModal");
   detailsModal.addEventListener("show.bs.modal", renderDetailsModal);
@@ -238,7 +247,6 @@ function renderMap() {
 }
 
 function renderEntry(currentEntryId) {
-  const changedEntryAudio = new Audio("audio/swing.mp3");
   changedEntryAudio.play();
 
   currentEntry = currentEntryId;
@@ -470,7 +478,6 @@ function renderInfoNotificationModal(titleText, notificationText) {
   );
   modalNotification.show();
 
-  const successAudio = new Audio("audio/success.mp3");
   successAudio.play();
 
   const modalTitle = document.createTextNode(titleText);
@@ -686,12 +693,10 @@ function renderFightResult(whoGotHit) {
   hitResult.classList.add("my-1", "rounded");
 
   if (whoGotHit === "opponentHit") {
-    const fightSuccessAudio = new Audio("audio/roll_success.mp3");
     fightSuccessAudio.play();
     hitResult.classList.add("bg-success");
     hitResult.textContent = "You hit your opponent!";
   } else if (whoGotHit === "playerHit") {
-    const fightFailAudio = new Audio("audio/roll_fail.mp3");
     fightFailAudio.play();
     hitResult.classList.add("bg-danger");
     hitResult.textContent = "Your opponent hit you!";
@@ -721,7 +726,6 @@ function renderOpponentEnduranceArea(endurance) {
 }
 
 function renderPlayerDiesModal(title, message) {
-  const playerDiesAudio = new Audio("audio/fail.mp3");
   playerDiesAudio.play();
 
   const modalPlayerDeath = new bootstrap.Modal(
@@ -867,7 +871,6 @@ function renderLoadSaveArea(areaName, includeInfoAndSaveButton) {
 }
 
 function renderInformationModal() {
-  const infoAudio = new Audio("audio/soft_bleep.mp3");
   infoAudio.play();
 
   const detailsModal = new bootstrap.Modal(

@@ -25,15 +25,14 @@ function startSavedGame(savedCharacter, savedLocation, savedAdventure) {
 }
 
 function goToEntry(event) {
+  document.getElementById("top").scrollIntoView({ behavior: "smooth" });
   const optionLink = event.target;
   const entryId = optionLink.getAttribute("data-entrytogoto");
   renderEntry(entryId);
   renderPlayerArea();
-  location.hash = "#top";
 }
 
 function testRoll(value) {
-  const testRollAudio = new Audio("audio/die_roll.mp3");
   testRollAudio.play();
 
   const dieRoll = rollDie();
@@ -242,8 +241,7 @@ function updateAdventure() {
 }
 
 function saveGame(characterData, locationData, adventureData) {
-  const testRollAudio = new Audio("audio/swing.mp3");
-  testRollAudio.play();
+  swingAudio.play();
 
   const savedGame = {
     character: characterData,
