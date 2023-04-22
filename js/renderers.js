@@ -11,6 +11,9 @@ let showCurrentEntry = document.getElementById("currentEntry");
 
 // Start Game Renderers
 function renderIntroduction(introduction, availableCharacters) {
+  const introductionAudio = new Audio("audio/tada.mp3");
+  introductionAudio.play();
+
   const detailsModal = document.getElementById("detailsModal");
   detailsModal.addEventListener("show.bs.modal", renderDetailsModal);
 
@@ -235,6 +238,9 @@ function renderMap() {
 }
 
 function renderEntry(currentEntryId) {
+  const changedEntryAudio = new Audio("audio/swing.mp3");
+  changedEntryAudio.play();
+
   currentEntry = currentEntryId;
 
   // Clear all areas
@@ -433,10 +439,13 @@ function renderEncounter(encounterData) {
   fightControl.classList.add("mt-2");
   fightControl.appendChild(fightBtn);
 
+  const lineBreak = document.createElement("br");
+
   const fightInfo = document.createElement("div");
   fightInfo.classList.add("mt-4");
   fightInfo.appendChild(document.createTextNode("Opponent's die roll: "));
   fightInfo.appendChild(opponentDieRollSpan);
+  fightInfo.appendChild(lineBreak);
   fightInfo.appendChild(document.createTextNode(" Your die roll: "));
   fightInfo.appendChild(playerDieRollSpan);
   fightInfo.appendChild(fightResultDiv);
@@ -460,6 +469,9 @@ function renderInfoNotificationModal(titleText, notificationText) {
     document.getElementById("notificationsModal")
   );
   modalNotification.show();
+
+  const successAudio = new Audio("audio/success.mp3");
+  successAudio.play();
 
   const modalTitle = document.createTextNode(titleText);
   const modalTitleArea = document.getElementById("notifications-title");
@@ -670,16 +682,21 @@ function clearDisplayArea(areaName) {
 
 function renderFightResult(whoGotHit) {
   const fightResultArea = document.getElementById("fightResult");
+  const hitResult = document.createElement("div");
+  hitResult.classList.add("my-1", "rounded");
 
   if (whoGotHit === "opponentHit") {
-    fightResultArea.classList.remove("bg-danger");
-    fightResultArea.classList.add("bg-success");
-    fightResultArea.textContent = "You hit your opponent!";
+    const fightSuccessAudio = new Audio("audio/roll_success.mp3");
+    fightSuccessAudio.play();
+    hitResult.classList.add("bg-success");
+    hitResult.textContent = "You hit your opponent!";
   } else if (whoGotHit === "playerHit") {
-    fightResultArea.classList.remove("bg-success");
-    fightResultArea.classList.add("bg-danger");
-    fightResultArea.textContent = "Your opponent hit you!";
+    const fightFailAudio = new Audio("audio/roll_fail.mp3");
+    fightFailAudio.play();
+    hitResult.classList.add("bg-danger");
+    hitResult.textContent = "Your opponent hit you!";
   }
+  fightResultArea.appendChild(hitResult);
 }
 
 function renderDieRolls(playerDie, opponentDie) {
@@ -704,6 +721,9 @@ function renderOpponentEnduranceArea(endurance) {
 }
 
 function renderPlayerDiesModal(title, message) {
+  const playerDiesAudio = new Audio("audio/fail.mp3");
+  playerDiesAudio.play();
+
   const modalPlayerDeath = new bootstrap.Modal(
     document.getElementById("playerDiesModal")
   );
@@ -847,6 +867,9 @@ function renderLoadSaveArea(areaName, includeInfoAndSaveButton) {
 }
 
 function renderInformationModal() {
+  const infoAudio = new Audio("audio/soft_bleep.mp3");
+  infoAudio.play();
+
   const detailsModal = new bootstrap.Modal(
     document.getElementById("detailsModal")
   );

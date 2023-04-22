@@ -33,6 +33,9 @@ function goToEntry(event) {
 }
 
 function testRoll(value) {
+  const testRollAudio = new Audio("audio/die_roll.mp3");
+  testRollAudio.play();
+
   const dieRoll = rollDie();
 
   if (playerCharacter[value] > dieRoll) {
@@ -239,6 +242,9 @@ function updateAdventure() {
 }
 
 function saveGame(characterData, locationData, adventureData) {
+  const testRollAudio = new Audio("audio/swing.mp3");
+  testRollAudio.play();
+
   const savedGame = {
     character: characterData,
     location: locationData,
