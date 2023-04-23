@@ -217,15 +217,16 @@ function useItem(event) {
       });
     });
 
-    delete playerCharacter.inventory[itemToUse];
-
     updateAdventure();
     renderPlayerArea();
     renderEntry(currentEntry);
     renderInfoNotificationModal(
-      "The " + itemToUse + " is Effective!",
-      "Using the " + itemToUse + " at this location has unlocked new options."
+      "The " + playerCharacter.inventory[itemToUse].name + " is Effective!",
+      "Using the " +
+        playerCharacter.inventory[itemToUse].name +
+        " at this location has unlocked new options."
     );
+    delete playerCharacter.inventory[itemToUse];
   } else if (itemType === "tool" && currentEntry !== relevantReference) {
     renderInfoNotificationModal(
       "Oops!",

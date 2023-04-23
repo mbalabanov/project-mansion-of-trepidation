@@ -549,7 +549,7 @@ const adventure = {
     connections: [{ reference: "e6048", text: "Leave Greenhouse." }],
     encounter: {},
     items: {
-      i21f8: {
+      i91d9: {
         name: "Magnifying Glass",
         type: "tool",
         value: 10,

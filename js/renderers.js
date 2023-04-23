@@ -237,6 +237,7 @@ function renderPlayerArea() {
 }
 
 function renderMap() {
+  infoAudio.play();
   const mapModal = new bootstrap.Modal(document.getElementById("mapModal"));
 
   const mapImage = document.getElementById("mapImage");
