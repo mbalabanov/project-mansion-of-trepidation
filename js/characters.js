@@ -1,7 +1,7 @@
 const availableCharacters = {
   Elona: {
     name: "Elona",
-    logo: "img/characters/elona-logo.png",
+    logo: "img/characters/elona_logo.png",
     description:
       "You are a skilled enchantress who harnesses the power of ice and cold. You have pale skin, white hair, and blue eyes, and wear robes made of shimmering ice crystals. You can freeze your enemies with a touch. You are solitary and mysterious, dwelling in frozen landscapes and using your powers to protect others and your territory.",
     agility: 6,
@@ -13,7 +13,7 @@ const availableCharacters = {
   },
   Devin: {
     name: "Devin",
-    logo: "img/characters/devin-logo.png",
+    logo: "img/characters/devin_logo.png",
     description:
       "You are a disciplined warrior dedicated to upholding the laws and maintaining order, regardless of your personal beliefs or emotions. You adhere to a strict code of conduct and honor, and have often served as an enforcer of the law and protector of the kingdom. You are driven by a sense of duty and responsibility. You follow orders and uphold the law, even if it occasionally would mean making difficult or unpopular decisions.",
     agility: 4,
@@ -25,7 +25,7 @@ const availableCharacters = {
   },
   Rangu: {
     name: "Rangu",
-    logo: "img/characters/rangu-logo.png",
+    logo: "img/characters/rangu_logo.png",
     description:
       "You are a fierce yet clumsy fighter with green skin, sharp teeth, and muscular build. You are known for your savagery and skill in combat, wielding weapons such as axes, maces, and swords. You wear ill-fitting armor made from the hides of beasts and skulls of your enemies, and your hair is usually fashionably unkempt.",
     agility: 3,

@@ -1,8 +1,8 @@
 // This is the data of the actual adventure with all the rooms, items, encounters, etc.
 
 const adventureTitle = "Mansion of Trepidation";
-const adventureLogo = "img/utilities/mansion-logo-3d.jpg";
-const adventureMap = "img/utilities/mansion-map.svg";
+const adventureLogo = "img/utilities/mansion_logo_3d.jpg";
+const adventureMap = "img/utilities/mansion_map.svg";
 const startingEntry = "e8f2c";
 
 const playerDiesMessage = {
@@ -81,7 +81,7 @@ const adventure = {
         value: 20,
         description:
           "This Crystal Key of the Ancients is a thing of pure beauty, crafted from a single, flawless piece of crystal that sparkled and glimmered in the light. Its edges were sharp and precise, and as you held it in your hand, you could feel the power and magic that it contained.",
-        image: "img/items/crystal-key.jpg",
+        image: "img/items/crystal_key.jpg",
         relevantReference: "efi33",
         addedChoices: [
           {
@@ -142,7 +142,7 @@ const adventure = {
         value: 100,
         description:
           "A purple pouch, crafted from rich, supple leather, overflows with gleaming gold coins and sparkling jewels. The treasures within catch the light, casting a tantalizing glow that promises wealth and adventure in a fantastical world.",
-        image: "img/items/pouch-of-treasures.jpg",
+        image: "img/items/pouch_of_treasures.jpg",
         relevantReference: "x",
         addedChoices: [],
       },
@@ -350,7 +350,7 @@ const adventure = {
         value: 20,
         description:
           "The ornate Ancient Dagger gleams with a dark, mysterious allure. Its blade, etched with enigmatic runes, whispers of forgotten power. You realize that some of it is as red as a herring.",
-        image: "img/items/dagger-of-separation.jpg",
+        image: "img/items/dagger_of_separation.jpg",
         relevantReference: "",
         addedChoices: [],
       },
@@ -550,7 +550,7 @@ const adventure = {
         value: 10,
         description:
           "The Magnifying Glass, a mystical glass imbued with the essence of a thousand scrutinizing eyes, unveils hidden secrets and obscure details, empowering its wielder with unparalleled perception and an unerring gaze into the arcane.",
-        image: "img/items/magnifying-glass.jpg",
+        image: "img/items/magnifying_glass.jpg",
         relevantReference: "e6b38",
         addedChoices: [
           {
@@ -636,7 +636,6 @@ const adventure = {
     text: [
       "You have entered the Conservatory. Its arches and ornate details exude a sense of elegance and refinement, while the lush greenery that fills the space lends a feeling of tranquility and natural beauty. Large windows line the walls, allowing sunlight to flood the space and providing unobstructed views of the surrounding gardens.",
       "The conservatory is home to a vast collection of plants, arranged in a carefully curated display that showcases the diversity of the natural world. Towering palms and ferns create a verdant canopy overhead, while exotic orchids and blooming tropical flowers provide bursts of vibrant color throughout the space.",
-      "As you stroll through the conservatory, you can't help but feel as though you've been transported to a lush, verdant paradise, far removed from the bustle of the outside world.",
     ],
     connections: [
       { reference: "e5f26", text: "Go north to the Chamber of Summoning." },
@@ -773,7 +772,7 @@ const adventure = {
         value: 20,
         description:
           "This amulet is an ancient talisman forged from the heart of a fallen mountain. It grants its wearer the ability to open a portal when in the right chamber.",
-        image: "img/items/amulet-of-stone.jpg",
+        image: "img/items/amulet_of_stone.jpg",
         relevantReference: "e6642",
         addedChoices: [
           {

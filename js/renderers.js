@@ -769,7 +769,7 @@ function renderNoGameSaved() {
   );
 
   const detailsImage = document.getElementById("details-image");
-  detailsImage.src = "img/utilities/no-game-saved.jpg";
+  detailsImage.src = "img/utilities/no_game_saved.jpg";
 
   const modalTitle = document.querySelector(".details-title");
   modalTitle.textContent = "No Saved Game Found!";
@@ -786,7 +786,7 @@ function renderGameLoaded() {
   );
 
   const detailsImage = document.getElementById("details-image");
-  detailsImage.src = "img/utilities/game-loaded.jpg";
+  detailsImage.src = "img/utilities/game_loaded.jpg";
 
   const modalTitle = document.querySelector(".details-title");
   modalTitle.textContent = "Your game was successfully loaded!";
@@ -803,7 +803,7 @@ function renderGameSaved() {
   );
 
   const detailsImage = document.getElementById("details-image");
-  detailsImage.src = "img/utilities/game-saved.jpg";
+  detailsImage.src = "img/utilities/game_saved.jpg";
 
   const modalTitle = document.querySelector(".details-title");
   modalTitle.textContent = "Your game was successfully saved!";
@@ -830,10 +830,7 @@ function renderLoadSaveArea(areaName, includeInfoAndSaveButton) {
     const infoButtonText = document.createTextNode("About Game");
     infoButton.appendChild(infoButtonText);
     infoButton.setAttribute("id", "infoButton");
-    infoButton.setAttribute(
-      "data-bs-imagepath",
-      "img/utilities/mansion-logo-3d.jpg"
-    );
+    infoButton.setAttribute("data-bs-imagepath", adventureLogo);
 
     loadSaveArea.appendChild(infoButton);
 
