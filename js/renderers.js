@@ -917,20 +917,3 @@ function renderInformationModal() {
 
   detailsModal.show();
 }
-
-function renderCharacterDetails() {
-  infoAudio.play();
-  // const detailsModal = new bootstrap.Modal(
-  //   document.getElementById("detailsModal")
-  // );
-
-  const detailsImage = document.getElementById("details-image");
-  detailsImage.src = playerCharacter.logo;
-
-  const modalTitle = document.querySelector(".details-title");
-  modalTitle.textContent = "Your are " + playerCharacter.name;
-
-  const modalDescription = document.querySelector(".details-description");
-  modalDescription.textContent = playerCharacter.description;
-  // detailsModal.show();
-}

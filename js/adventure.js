@@ -821,7 +821,7 @@ const adventure = {
       "As you open the bubble prison, William turns to you with an expression of surprise and joy. He leaps off the platform and runs to you, embracing you in a tight hug. He's so happy to see you, and you're so happy to see him. You take his little hand and help him out of the bubble prison.",
     ],
     specialText: [
-      "You have successfully completed your quest! The moment had arrived, a culmination of your journey. You lead young William out of the acursed Mortacion's Mansion of Trepidation and into safety of the real world. And you can finally live happily ever after...",
+      "Congratulations! You have successfully completed your quest! The moment had arrived, a culmination of your journey. You lead young William out of the acursed Mortacion's Mansion of Trepidation and into safety of the real world. And you can finally live happily ever after...",
     ],
     connections: [],
     encounter: {},

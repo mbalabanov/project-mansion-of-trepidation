@@ -5,8 +5,6 @@ function generateStartModal() {
   startModal.classList.add("modal", "fade");
   startModal.id = "startModal";
   startModal.tabIndex = "-1";
-  startModal.setAttribute("aria-labelledby", "startModalLabel");
-  startModal.setAttribute("aria-hidden", "true");
   startModal.setAttribute("data-bs-backdrop", "static");
   startModal.setAttribute("data-bs-keyboard", "false");
 
@@ -80,8 +78,6 @@ function generateMapModal() {
   mapModal.classList.add("modal", "fade");
   mapModal.setAttribute("id", "mapModal");
   mapModal.tabIndex = "-1";
-  mapModal.setAttribute("aria-labelledby", "mapModal");
-  mapModal.setAttribute("aria-hidden", "true");
   mapModal.setAttribute("data-bs-keyboard", "true");
 
   const modalDialog = document.createElement("div");
@@ -135,8 +131,6 @@ function generatePlayerDiesModal() {
   modalDiv.classList.add("modal", "fade");
   modalDiv.id = "playerDiesModal";
   modalDiv.tabIndex = "-1";
-  modalDiv.setAttribute("aria-labelledby", "playerDiesModal");
-  modalDiv.setAttribute("aria-hidden", "true");
   modalDiv.setAttribute("data-bs-backdrop", "static");
   modalDiv.setAttribute("data-bs-keyboard", "false");
 
@@ -202,8 +196,6 @@ function generateInventoryFullModal() {
   inventoryFullModal.classList.add("modal", "fade");
   inventoryFullModal.id = "inventoryFullModal";
   inventoryFullModal.tabIndex = "-1";
-  inventoryFullModal.setAttribute("aria-labelledby", "inventoryFullModal");
-  inventoryFullModal.setAttribute("aria-hidden", "true");
   inventoryFullModal.setAttribute("data-bs-keyboard", "true");
 
   const modalDialog = document.createElement("div");
@@ -261,8 +253,6 @@ function generateNotificationsModal() {
   notificationsModal.classList.add("modal", "fade");
   notificationsModal.id = "notificationsModal";
   notificationsModal.tabIndex = "-1";
-  notificationsModal.setAttribute("aria-labelledby", "notificationsModal");
-  notificationsModal.setAttribute("aria-hidden", "true");
   notificationsModal.setAttribute("data-bs-keyboard", "true");
 
   const modalDialog = document.createElement("div");
@@ -324,8 +314,6 @@ function generateDetailsModal() {
   detailsModal.classList.add("modal", "fade");
   detailsModal.id = "detailsModal";
   detailsModal.tabIndex = "-1";
-  detailsModal.setAttribute("aria-labelledby", "notificationsModal");
-  detailsModal.setAttribute("aria-hidden", "true");
   detailsModal.setAttribute("data-bs-keyboard", "true");
 
   // Create the modal dialog element
