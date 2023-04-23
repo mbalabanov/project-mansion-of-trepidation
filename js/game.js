@@ -150,6 +150,9 @@ function fight() {
 }
 
 function getItem(event) {
+  document
+    .getElementById("characterInventoryArea")
+    .scrollIntoView({ behavior: "smooth" });
   const clickedItem = event.target;
   const itemId = clickedItem.getAttribute("data-itemToGet");
   if (Object.values(playerCharacter.inventory).length < 3) {
@@ -215,6 +218,7 @@ function useItem(event) {
         text: option.text,
         reference: option.reference,
       });
+      document.getElementById("choices").scrollIntoView({ behavior: "smooth" });
     });
 
     updateAdventure();
@@ -222,7 +226,7 @@ function useItem(event) {
     renderEntry(currentEntry);
     renderInfoNotificationModal(
       "The " + playerCharacter.inventory[itemToUse].name + " is Effective!",
-      "Using the " +
+      "Good job! Using the " +
         playerCharacter.inventory[itemToUse].name +
         " at this location has unlocked new options."
     );
@@ -242,7 +246,7 @@ function updateAdventure() {
 }
 
 function saveGame(characterData, locationData, adventureData) {
-  swingAudio.play();
+  changedEntryAudio.play();
 
   const savedGame = {
     character: characterData,
@@ -256,6 +260,7 @@ function saveGame(characterData, locationData, adventureData) {
 
 function loadGame() {
   const savedGame = JSON.parse(localStorage.getItem(adventureTitle));
+  changedEntryAudio.play();
   if (savedGame) {
     startSavedGame(
       savedGame.character,

@@ -82,10 +82,10 @@ const adventure = {
         description:
           "This Crystal Key of the Ancients is a thing of pure beauty, crafted from a single, flawless piece of crystal that sparkled and glimmered in the light. Its edges were sharp and precise, and as you held it in your hand, you could feel the power and magic that it contained.",
         image: "img/items/crystal-key.jpg",
-        relevantReference: "efi32",
+        relevantReference: "efi33",
         addedChoices: [
           {
-            reference: "efi33",
+            reference: "e77e0",
             text: "Enter the portal formed by the algae (thanks to the Crystal Key).",
           },
         ],
@@ -349,15 +349,10 @@ const adventure = {
         type: "tool",
         value: 20,
         description:
-          "The ornate Ancient Dagger gleams with a dark, mysterious allure. Its blade, etched with enigmatic runes, whispers of forgotten power. You realize that you can use this to enter a forbidden realm when you are in the right place.",
+          "The ornate Ancient Dagger gleams with a dark, mysterious allure. Its blade, etched with enigmatic runes, whispers of forgotten power. You realize that some of it is as red as a herring.",
         image: "img/items/dagger-of-separation.jpg",
-        relevantReference: "efi33",
-        addedChoices: [
-          {
-            reference: "e77e0",
-            text: "Float to your final destination (thanks to the Dagger).",
-          },
-        ],
+        relevantReference: "",
+        addedChoices: [],
       },
     },
     incident: {},
@@ -420,7 +415,7 @@ const adventure = {
       "In the center of the maze, you come across a small clearing, where a stone bench rests beneath a towering hedge. The bench is worn and weathered, but still sturdy enough to support your weight. As you sit and take in the beauty of the room, you can't help but feel as though you've stumbled upon a hidden oasis, a tranquil haven in the midst of the bustling city outside.",
     ],
     specialText: [
-      "You are lost! You feel that you might be able to get through the maze if you had a compass.",
+      "You are lost! You can get through the maze if you use a compass.",
     ],
     connections: [
       {
@@ -476,20 +471,20 @@ const adventure = {
         text: "You managed to dodge the arrow.",
         connections: [
           { reference: "e70ce", text: "Go north to the Library." },
-          { reference: "e54cc", text: "Go south to the Gambling Room." },
           { reference: "e67d2", text: "Go east to the Hall of Chess." },
           { reference: "e53b4", text: "Go west to the Kitchen." },
+          { reference: "e54cc", text: "Go south to the Gambling Room." },
         ],
         value: 2,
       },
       fail: {
-        text: "You fail to evade the arrow and take 2 endurance points of damage.",
-        enduranceDeducted: 2,
+        text: "You fail to evade the arrow and take one endurance point of damage.",
+        enduranceDeducted: 1,
         connections: [
           { reference: "e70ce", text: "Go north to the Library." },
-          { reference: "e54cc", text: "Go south to the Gambling Room." },
           { reference: "e67d2", text: "Go east to the Hall of Chess." },
           { reference: "e53b4", text: "Go west to the Kitchen." },
+          { reference: "e54cc", text: "Go south to the Gambling Room." },
         ],
       },
     },
@@ -625,8 +620,8 @@ const adventure = {
         value: 2,
       },
       fail: {
-        text: "You fail to evade the column of flame and take 2 endurance points of damage.",
-        enduranceDeducted: 2,
+        text: "You fail to evade the column of flame and take one endurance point of damage.",
+        enduranceDeducted: 1,
         repeat: false,
         connections: [
           { reference: "e6b38", text: "Go north to the Study." },
@@ -634,21 +629,6 @@ const adventure = {
         ],
       },
     },
-    npc: {},
-  },
-  efi32: {
-    title: "Dimension of Madness",
-    text: [
-      "In the Dimension of Madness, the very foundations of reality unravel, revealing a realm where logic holds no sway. Here, amorphous blobs of vibrant, ever-shifting colors float aimlessly through the void, their surfaces roiling with mesmerizing patterns that bewilder the senses and confound the mind.",
-      "In this realm of chaos, magical light suffuses the air, casting an iridescent haze that refracts and disperses, painting the abyss with a dazzling, yet disorienting, spectrum of hues. The ethereal glow seems to possess a life of its own, pulsing and flickering like the heartbeat of the dimension itself.",
-    ],
-    specialText: [
-      "Despite the line between fantasy and nightmare blurring, you recognize that you can pass through to the next cosmic realm by stepping through a knot of cosmic algae using a Crystal Key.",
-    ],
-    connections: [{ reference: "e6642", text: "Return to Inner Sanctum." }],
-    encounter: {},
-    items: {},
-    incident: {},
     npc: {},
   },
   e6c64: {
@@ -749,8 +729,8 @@ const adventure = {
         value: 2,
       },
       fail: {
-        text: "You fail to evade the poison darts and take 2 endurance points of damage.",
-        enduranceDeducted: 2,
+        text: "You fail to evade the poison darts and take one endurance point of damage.",
+        enduranceDeducted: 1,
         connections: [
           { reference: "e6c64", text: "Go north to the Conservatory." },
           { reference: "e756a", text: "Go east to the Cloud Room." },
@@ -768,14 +748,9 @@ const adventure = {
       "These fantastical flora seem to exist beyond the confines of time and space, pulsating with an energy that resonates with the very essence of the universe. The translucent leaves and iridescent blooms emit a soft, hypnotic glow, casting ephemeral patterns of light and shadow in a mesmerizing dance.",
     ],
     specialText: [
-      "Amidst the swirling eddies of quantum energy, these alien plants intertwine and float gracefully, you see that a Jewelled Dagger would let you magically cut through the unreality of this realm to your final destination.",
+      "Amidst the swirling eddies of quantum energy, these alien plants intertwine and float gracefully, you see that a Crystal Key would let you magically cut through the unreality of this realm to your final destination.",
     ],
-    connections: [
-      {
-        reference: "efi32",
-        text: "Return to the Dimension of Madness.",
-      },
-    ],
+    connections: [{ reference: "e6642", text: "Return to Inner Sanctum." }],
     encounter: {},
     items: {},
     incident: {},
@@ -802,8 +777,8 @@ const adventure = {
         relevantReference: "e6642",
         addedChoices: [
           {
-            reference: "efi32",
-            text: "Traverse through the window (thanks to the Amulet).",
+            reference: "efi33",
+            text: "Traverse through the window into another dimensional realm (thanks to the Amulet).",
           },
         ],
       },
@@ -822,13 +797,16 @@ const adventure = {
       encounterId: "94c0",
       name: "Wobblin' Goblin",
       description:
-        "A Wobblin' Goblin stands guard infronte of the Ethereal Mirror. There are no two ways about it, this creature is drunk. He staggers about with a wild abandon, his movements clumsy and erratic. His eyes are bleary and unfocused, and his speech is slurred and incoherent. Despite his inebriation, the goblin is still quick and nimble, able to attack you with surprising speed. He seems to be enjoying himself immensely, relishing in the feeling of havoc and carelessness that comes with drunkenness.",
+        "A Wobblin' Goblin stands guard in front of the Ethereal Mirror. There are no two ways about it, this creature is drunk. He staggers about with a wild abandon, his movements clumsy and erratic. His eyes are bleary and unfocused, and his speech is slurred and incoherent. Despite his inebriation, the goblin is still quick and nimble, able to attack you with surprising speed. He seems to be enjoying himself immensely, relishing in the feeling of havoc and carelessness that comes with drunkenness.",
       agility: 3,
       endurance: 3,
       value: 5,
       onDeath: [
         { reference: "e53b4", text: "Go north to the Kitchen." },
-        { reference: "e21c9", text: "Enter the strange world in the mirror." },
+        {
+          reference: "e21c9",
+          text: "Enter the strange world in the mirror (though you have a feeling you might never return).",
+        },
       ],
       image: "img/encounters/wobblin_goblin.jpg",
     },
@@ -904,7 +882,7 @@ const adventure = {
       "You brush aside the cobwebs and hold the book up to the light. The pages are yellowed and brittle, and the ink is faded and smudged, but thanks to the Magnifying Glass you understand the words. Particularly one section peaks your interest:",
       "'Mortacion, the notorious necromancer, is a figure shrouded in mystery and dark magic. His seemingly infinite power has allowed him to connect different planes of existence and dimensions, making his mansion a nexus of the multiverse. The estate itself is a sprawling, sinister structure, with an ominous presence that hangs heavy in the air. Its walls are adorned with intricate carvings and arcane symbols that pulse with an eerie energy, hinting at the unspeakable power contained within.'",
       "'The mansion is labyrinthine in nature, with its corridors twisting and turning, defying the very laws of physics. One room holds the gateway to another dimension, filled with otherworldly artifacts and creatures that would send shivers down the spine of even the most hardened adventurer: Mortacion's Altar Room'",
-      "'There is only one way into the Altar Room: through the Inner Sanctum. It's window is no mere opening into the outside, but a gateway to another plane of existence. It can only be entered using three objects: the Amulet of Stone, the Jewelled Dagger, and the Crystal Key of the Ancients. They are hidden in different chambers in Mortacion's mansion.'",
+      "'There is only one way into the Altar Room: through the Inner Sanctum. It's window is no mere opening into the outside, but a gateway to another plane of existence. It can only be entered using two objects: the Amulet of Stone and the Crystal Key of the Ancients. They are hidden in different chambers in Mortacion's mansion.'",
     ],
     connections: [
       { reference: "e6b38", text: "Go north to the Study." },
@@ -923,7 +901,7 @@ const adventure = {
       "When she finishes her song, she bows gracefully, her eyes twinkling with a mischievous glint. You pet her tenderly and tell her about your quest to find William. She looks you deeply in the eyes and decides to help you by telling you the secret location of one of the objects you need to complete your quest.",
     ],
     specialText: [
-      "'Mortacion is hidden in his Altar Room. I cannot tell you how to get there, but I do know that you will need to seek out the Jewelled Dagger. It is hidden in the Gambling Room, west of the Grand Entrance Hall. I wish you good fortune and bid you godspeed on your quest to find your nephew.'",
+      "'Mortacion is hidden in his Altar Room. I cannot tell you how to get there, but I do know that when you fight him, you will lose a lot of health so you might need the Potion of Healing, hidden in the Infirmary, east of the Chamber of Summoning. I wish you good fortune and bid you godspeed on your quest to find your nephew.'",
     ],
     connections: [{ reference: "e59d6", text: "Focus back on the Stables" }],
     encounter: {},

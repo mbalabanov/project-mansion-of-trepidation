@@ -131,6 +131,10 @@ function renderPlayerArea() {
       itemImg.alt = playerCharacter.inventory[itemKey].name;
       itemImg.classList.add("img-fluid", "rounded");
       itemImg.setAttribute("data-bs-toggle", "modal");
+      itemImg.setAttribute(
+        "data-bs-imagePath",
+        playerCharacter.inventory[itemKey].image
+      );
       itemImg.setAttribute("data-bs-target", "#detailsModal");
       itemImg.setAttribute(
         "data-bs-title",
@@ -316,19 +320,13 @@ function renderEntry(currentEntryId) {
 }
 
 function renderOptions(text, reference) {
-  const optionItem = document.createElement("li");
-  const optionImage = document.createElement("img");
-  optionImage.setAttribute("src", "img/utilities/medallion.png");
-  optionImage.setAttribute("alt", "Go to");
-  optionImage.setAttribute("width", 40);
-  optionImage.classList.add("m-2");
+  const optionItem = document.createElement("button");
 
   const optionText = document.createTextNode(text);
-  optionItem.appendChild(optionImage);
   optionItem.appendChild(optionText);
-  optionItem.classList.add("list-group-item");
-  optionItem.classList.add("list-group-item-action");
-  optionItem.classList.add("list-group-item-primary");
+  optionItem.classList.add("m-2");
+  optionItem.classList.add("btn");
+  optionItem.classList.add("btn-warning");
   optionItem.setAttribute("data-entrytogoto", `${reference}`);
   choices.appendChild(optionItem);
   optionItem.addEventListener("click", goToEntry);
@@ -894,7 +892,7 @@ function renderInformationModal() {
     "Programmed by Marin Balabanov in JavaScript and Bootstrap 5."
   );
   const creditsLineContent2 = document.createTextNode(
-    "Artwork generated using Bing Creator, Midjourney AI and ArtText 4 ."
+    "Artwork generated using Bing Creator, Midjourney AI and ArtText 4."
   );
   creditsLineParagraph1.appendChild(creditsLineContent1);
   creditsLineParagraph2.appendChild(creditsLineContent2);
