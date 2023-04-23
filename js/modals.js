@@ -77,8 +77,8 @@ function generateStartModal() {
 
 function generateMapModal() {
   const mapModal = document.createElement("div");
-  mapModal.className = "modal fade";
-  mapModal.id = "mapModal";
+  mapModal.classList.add("modal", "fade");
+  mapModal.setAttribute("id", "mapModal");
   mapModal.tabIndex = "-1";
   mapModal.setAttribute("aria-labelledby", "mapModal");
   mapModal.setAttribute("aria-hidden", "true");
@@ -132,7 +132,7 @@ function generateMapModal() {
 function generatePlayerDiesModal() {
   // Create the HTML elements
   const modalDiv = document.createElement("div");
-  modalDiv.className = "modal fade";
+  modalDiv.classList.add("modal", "fade");
   modalDiv.id = "playerDiesModal";
   modalDiv.tabIndex = "-1";
   modalDiv.setAttribute("aria-labelledby", "playerDiesModal");
@@ -199,7 +199,7 @@ function generatePlayerDiesModal() {
 
 function generateInventoryFullModal() {
   const inventoryFullModal = document.createElement("div");
-  inventoryFullModal.className = "modal fade";
+  inventoryFullModal.classList.add("modal", "fade");
   inventoryFullModal.id = "inventoryFullModal";
   inventoryFullModal.tabIndex = "-1";
   inventoryFullModal.setAttribute("aria-labelledby", "inventoryFullModal");
@@ -320,13 +320,13 @@ function generateNotificationsModal() {
 
 function generateDetailsModal() {
   // Create the modal element
-  const modal = document.createElement("div");
-  modal.classList.add("modal", "fade");
-  modal.setAttribute("id", "detailsModal");
-  modal.setAttribute("tabindex", "-1");
-  modal.setAttribute("aria-labelledby", "detailsModalLabel");
-  modal.setAttribute("aria-hidden", "true");
-  modal.setAttribute("data-bs-keyboard", "true");
+  const detailsModal = document.createElement("div");
+  detailsModal.classList.add("modal", "fade");
+  detailsModal.id = "detailsModal";
+  detailsModal.tabIndex = "-1";
+  detailsModal.setAttribute("aria-labelledby", "notificationsModal");
+  detailsModal.setAttribute("aria-hidden", "true");
+  detailsModal.setAttribute("data-bs-keyboard", "true");
 
   // Create the modal dialog element
   const modalDialog = document.createElement("div");
@@ -356,14 +356,15 @@ function generateDetailsModal() {
   const col1 = document.createElement("div");
   col1.classList.add("col-12");
 
-  const closeButton = document.createElement("button");
-  closeButton.classList.add("btn", "btn-sm", "btn-outline-light");
-  closeButton.setAttribute("data-bs-dismiss", "modal");
-  closeButton.textContent = "Close";
+  const detailsCloseButton = document.createElement("button");
+  detailsCloseButton.type = "button";
+  detailsCloseButton.className = "btn btn-outline-light";
+  detailsCloseButton.setAttribute("data-bs-dismiss", "modal");
+  detailsCloseButton.textContent = "Close";
 
   const p1 = document.createElement("p");
   p1.classList.add("text-end");
-  p1.appendChild(closeButton);
+  p1.appendChild(detailsCloseButton);
 
   col1.appendChild(p1);
   row1.appendChild(col1);
@@ -402,10 +403,10 @@ function generateDetailsModal() {
   modalBody.appendChild(row2);
   modalContent.appendChild(modalBody);
   modalDialog.appendChild(modalContent);
-  modal.appendChild(modalDialog);
+  detailsModal.appendChild(modalDialog);
 
   // Add the modal to the DOM
-  document.body.appendChild(modal);
+  document.body.appendChild(detailsModal);
 }
 
 function generateCharacterSheet(character, showDetailsButton) {
@@ -482,25 +483,27 @@ function generateCharacterSheet(character, showDetailsButton) {
     characterDetailsButton.classList.add("btn");
     characterDetailsButton.classList.add("btn-outline-secondary");
     characterDetailsButton.classList.add("mb-2");
-    characterDetailsButton.setAttribute("data-bs-toggle", "modal");
-    characterDetailsButton.setAttribute("data-bs-target", "#detailsModal");
-    characterDetailsButton.setAttribute("data-bs-imagePath", character.logo);
     characterDetailsButton.setAttribute(
       "data-bs-title",
-      "You are " + character.name
+      "You are " + playerCharacter.name
     );
     characterDetailsButton.setAttribute(
       "data-bs-description",
-      character.description
+      playerCharacter.description
+    );
+    characterDetailsButton.setAttribute(
+      "data-bs-imagepath",
+      playerCharacter.logo
     );
     const characterDetailsButtonText =
       document.createTextNode("Character Details");
     characterDetailsButton.appendChild(characterDetailsButtonText);
+    characterDetailsButton.setAttribute("id", "characterDetailsButton");
+    characterDetailsButton.addEventListener("click", renderDetailsModal);
     characterAlert.appendChild(characterDetailsButton);
   }
 
   characterAlert.appendChild(characterInventory);
-
   characterCol.appendChild(characterAlert);
 
   return characterCol;

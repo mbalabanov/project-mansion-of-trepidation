@@ -670,7 +670,7 @@ const adventure = {
       encounterId: "29a1",
       name: "Beholding Petal-Head",
       description:
-        "As you make your way through the foliage, you are attacked a Beholding Petal-Head, a creature of nightmares, with a delicate exterior that belies its deadly nature. At first glance, it appears to be nothing more than a beautiful rosebud, with soft, velvety petals that shine with a lustrous sheen. But upon closer inspection, one can see that there is an eye nestled between the petals, gleaming with a sinister intelligence. The razor-sharp thorns that line the stem of the rosebud are a warning of the creature's ferocity, a reminder that even the most beautiful things in life can be deadly.",
+        "As you make your way through the foliage, you are attacked a Beholding Petal-Head, a creature of nightmares, with a delicate exterior that belies its deadly nature. At first glance, it appears to be nothing more than a beautiful rosebud, with soft, velvety petals that shine with a lustrous sheen. But the razor-sharp thorns that line the stem of the rosebud are a warning of the creature's ferocity, a reminder that even the most beautiful things in life can be deadly.",
       agility: 2,
       endurance: 2,
       value: 5,

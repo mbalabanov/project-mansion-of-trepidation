@@ -9,22 +9,19 @@ const playerDiesAudio = new Audio("audio/fail.mp3");
 const infoAudio = new Audio("audio/soft_bleep.mp3");
 
 // Initialize DOM Elements
-let textOutput = document.getElementById("textOutput");
-let encounter = document.getElementById("encounter");
-let incidentArea = document.getElementById("incident");
-let itemsOnLocation = document.getElementById("itemsOnLocation");
-let npcArea = document.getElementById("npcArea");
-let choices = document.getElementById("choices");
-let locationTitleArea = document.getElementById("locationTitle");
-let locationImage = document.getElementById("locationImage");
-let showCurrentEntry = document.getElementById("currentEntry");
+const textOutput = document.getElementById("textOutput");
+const encounter = document.getElementById("encounter");
+const incidentArea = document.getElementById("incident");
+const itemsOnLocation = document.getElementById("itemsOnLocation");
+const npcArea = document.getElementById("npcArea");
+const choices = document.getElementById("choices");
+const locationTitleArea = document.getElementById("locationTitle");
+const locationImage = document.getElementById("locationImage");
+const showCurrentEntry = document.getElementById("currentEntry");
 
 // Start Game Renderers
 function renderIntroduction(introduction, availableCharacters) {
   tadaAudio.play();
-
-  const detailsModal = document.getElementById("detailsModal");
-  detailsModal.addEventListener("show.bs.modal", renderDetailsModal);
 
   const playerCharacterArea = document.getElementById("playerCharacterArea");
 
@@ -53,6 +50,8 @@ function renderIntroduction(introduction, availableCharacters) {
     introductionTextArea.appendChild(introductionItem);
   });
 
+  introductionModal.show();
+
   for (const key in availableCharacters) {
     if (availableCharacters.hasOwnProperty(key)) {
       const characterSheet = generateCharacterSheet(
@@ -60,7 +59,6 @@ function renderIntroduction(introduction, availableCharacters) {
         false
       );
       chooseCharacterArea.appendChild(characterSheet);
-      introductionModal.show();
 
       const characterAlert = document.getElementById(
         "playerInnerArea" + availableCharacters[key].name
@@ -76,7 +74,7 @@ function renderIntroduction(introduction, availableCharacters) {
       const characterButtonName = document.createTextNode(key);
       characterButton.appendChild(characterButtonText);
       characterButton.appendChild(characterButtonName);
-      characterButton.dataset.bsDismiss = "modal";
+      characterButton.setAttribute("data-bs-dismiss", "modal");
       characterButton.setAttribute("id", key);
 
       characterAlert.appendChild(characterButton);
@@ -130,12 +128,11 @@ function renderPlayerArea() {
       itemImg.src = playerCharacter.inventory[itemKey].image;
       itemImg.alt = playerCharacter.inventory[itemKey].name;
       itemImg.classList.add("img-fluid", "rounded");
-      itemImg.setAttribute("data-bs-toggle", "modal");
+      itemImg.id = `iteminfo-${itemKey}`;
       itemImg.setAttribute(
-        "data-bs-imagePath",
+        "data-bs-imagepath",
         playerCharacter.inventory[itemKey].image
       );
-      itemImg.setAttribute("data-bs-target", "#detailsModal");
       itemImg.setAttribute(
         "data-bs-title",
         playerCharacter.inventory[itemKey].name
@@ -148,6 +145,7 @@ function renderPlayerArea() {
         "data-bs-imagepath",
         playerCharacter.inventory[itemKey].image
       );
+      itemImg.addEventListener("click", renderDetailsModal);
       invDiv.appendChild(itemImg);
 
       // Create a new "Use" button and append it to the div
@@ -334,8 +332,13 @@ function renderOptions(text, reference) {
 }
 
 function renderDetailsModal(event) {
-  const button = event.relatedTarget;
-  const imagePath = button.getAttribute("data-bs-imagePath");
+  infoAudio.play();
+  const detailsModal = new bootstrap.Modal(
+    document.getElementById("detailsModal")
+  );
+
+  const button = event.target;
+  const imagePath = button.getAttribute("data-bs-imagepath");
   const title = button.getAttribute("data-bs-title");
   const imageDescription = button.getAttribute("data-bs-description");
 
@@ -347,6 +350,8 @@ function renderDetailsModal(event) {
 
   const modalDescription = document.querySelector(".details-description");
   modalDescription.textContent = imageDescription;
+
+  detailsModal.show();
 }
 
 function renderEncounter(encounterData) {
@@ -825,6 +830,10 @@ function renderLoadSaveArea(areaName, includeInfoAndSaveButton) {
     const infoButtonText = document.createTextNode("About Game");
     infoButton.appendChild(infoButtonText);
     infoButton.setAttribute("id", "infoButton");
+    infoButton.setAttribute(
+      "data-bs-imagepath",
+      "img/utilities/mansion-logo-3d.jpg"
+    );
 
     loadSaveArea.appendChild(infoButton);
 
@@ -907,4 +916,21 @@ function renderInformationModal() {
   });
 
   detailsModal.show();
+}
+
+function renderCharacterDetails() {
+  infoAudio.play();
+  // const detailsModal = new bootstrap.Modal(
+  //   document.getElementById("detailsModal")
+  // );
+
+  const detailsImage = document.getElementById("details-image");
+  detailsImage.src = playerCharacter.logo;
+
+  const modalTitle = document.querySelector(".details-title");
+  modalTitle.textContent = "Your are " + playerCharacter.name;
+
+  const modalDescription = document.querySelector(".details-description");
+  modalDescription.textContent = playerCharacter.description;
+  // detailsModal.show();
 }
