@@ -66,7 +66,6 @@ const adventure = {
     title: "Cloud Room",
     text: [
       "You behold a breathtaking sight, the Cloud Room with tall, elegant windows that stretch from floor to ceiling, offering a stunning view of the sky outside. But what's truly remarkable about the room is the floor - it's covered in actual clouds, soft and pillowy as though you're walking on air.",
-      "As you step into the room, you feel as though you're walking on a dream, the clouds shifting and molding beneath your feet as though they were alive. The room is filled with a soft, diffused light that seems to be emanating from the clouds themselves, casting a serene and peaceful atmosphere over everything within.",
       "In the corner of the room sits a plush couch that appears to grow out of the clouds themselves. The cushions are covered in a soft, velvety fabric that seems to blend seamlessly with the clouds around it. It's a place where you can sink in and relax, surrounded by the gentle rustling of the clouds and the soothing calm of the room.",
     ],
     connections: [
@@ -97,9 +96,9 @@ const adventure = {
   e77e0: {
     title: "Mortacion's Altar Room",
     text: [
-      "You have reached Mortacion's sinister Altar Room, shadowy figures loom from twisted, grotesque statues, their malevolent gazes fixed on intruders. Flickering candlelight casts eerie, elongated shadows on the walls, intensifying the unsettling atmosphere. At the far end of the room, an ominous pentagram window dominates the space, its blood-red stained glass casting a crimson glow over the ritual altar below.",
+      "You have reached Mortacion's sinister Altar Room, shadowy figures loom from twisted, grotesque statues, their malevolent gazes fixed on intruders. At the far end of the room, an ominous pentagram window dominates the space, its blood-red stained glass casting a crimson glow over the ritual altar below.",
       "Upon the cold, stone altar, remnants of dark ceremonies linger: scattered bones, dried bloodstains, and mysterious, forbidden artifacts. The air is thick with tension, and a palpable sense of dread lingers, as if the very walls bear witness to the unspeakable acts that have transpired within this unhallowed chamber.",
-      "From where you stand, you can see William's Bubble Cell. But first, you must defeat Mortacion.",
+      "From where you stand, you can see William's Bubble Cell. But first, you must defeat Mortacion!",
     ],
     connections: [{ reference: "efi33", text: "Return to Quantum Realm" }],
     encounter: {
@@ -126,7 +125,7 @@ const adventure = {
     title: "Treasure Room",
     text: [
       "You are startled when you enter the Treasure Room with rows of wooden chests lining the walls, each one overflowing with gold coins, precious jewels, and other priceless treasures.",
-      "As you move through the room, you're struck by the sheer amount of wealth that surrounds you. The coins glint in the dim light, and the jewels sparkle and dance, casting intricate patterns of color on the walls and floor, a reminder that even the greatest riches can become nothing more than a burden and a curse.",
+      "As you move through the room, you're struck by the sheer amount of wealth that surrounds you. The coins glint in the dim light, and the jewels sparkle and dance, casting intricate patterns of color on the walls and floor.",
     ],
     connections: [
       {
@@ -153,15 +152,15 @@ const adventure = {
   e7434: {
     title: "Holding Pens",
     text: [
-      "These are the Holding Pens of the laboratory, a place of wonder and mystery, filled with strange instruments, flickering gas lamps, and the pungent smell of chemicals. But amidst the gleaming brass and bubbling flasks, there are also the cages and holding pens for the laboratory animals - a stark reminder of the cost of scientific progress.",
-      "The cages are cramped and small, made of rusted iron bars that clanged and rattled with each movement of the frightened creatures inside. There are rats scurrying along the walls, their beady eyes darting fearfully as they sniffed the air for any sign of danger.",
+      "These are the Holding Pens of the laboratory, a place of wonder and mystery, filled with strange instruments, flickering gas lamps, and the pungent smell of chemicals. But amidst the gleaming brass and bubbling flasks, there are also the cages and holding pens for the laboratory animals.",
+      "The cages are cramped and small, made of rusted iron bars that clanged and rattled with each movement of the frightened creatures inside.",
     ],
     connections: [],
     encounter: {
       encounterId: "fa92",
       name: "Skeletal Warrior",
       description:
-        "The Skeletal Warrior stands tall and imposing, its bleached bones gleaming in the flickering torchlight. Its empty dark eye sockets hint at the malevolent intelligence that lurked within its ancient frame. Clad in a cloak and wielding an ornate sword, the SKELETON WARRIOR moves with a fluid grace that belies its skeletal form. Its bones creak and groan with each movement, but it seemed to feel no pain or fatigue - for it was already dead, animated by some dark magic or foul necromancy. Prepare for battle.",
+        "The Skeletal Warrior stands tall and imposing, its bleached bones gleaming in the flickering torchlight. Clad in a cloak and wielding an ornate sword, the Skeleton Warrior moves with a fluid grace that belies its skeletal form. Its bones creak and groan with each movement, but it seemed to feel no pain or fatigue - for it was already dead! Prepare for battle.",
       agility: 3,
       endurance: 2,
       value: 5,
@@ -179,15 +178,15 @@ const adventure = {
   e76c8: {
     title: "Dungeon",
     text: [
-      "The foul Dungeon of the mansion is a dark and foreboding space, with musty air and crumbling walls. The stairs are steep and creaky, and the only light comes from a few feeble rays that filter in through the windows in the ceiling.",
-      "As you descend into the basement, you're struck by the sense of decay and neglect that pervades the space. The air is thick with the scent of mildew and dampness, and the sound of dripping water echoes through the empty chambers reminding you that the darkness itself hides unspeakable horror. You seek to unlock its secrets and discover the hidden truths that lie within.",
+      "The foul Dungeon of the mansion is a dark and foreboding space, with musty air and crumbling walls. The stairs are steep and slippery, and the only light comes from a few feeble rays that filter in through the windows in the ceiling.",
+      "The air is thick with the scent of mildew and dampness, and the sound of dripping water echoes through the empty chambers reminding you that the darkness itself hides unspeakable horror. You seek to unlock its secrets and discover the hidden truths that lie within.",
     ],
     connections: [],
     encounter: {
       encounterId: "97d2",
       name: "Mozaku Guardian",
       description:
-        "The dungeon is guarded by a Mozaku Guardian. It has two faces, one of a beautiful geisha and the other of an infernal demon. Despite being blood stained, the geisha face is alluring and enchanting, with porcelain skin, delicate features, and seductive eyes. Meanwhile, the demonic face is grotesque and terrifying, with fiery eyes, sharp fangs, and twisted horns. The Mozaku Guardian attacks you.",
+        "The dungeon is guarded by a Mozaku Guardian. It has two faces, one of a beautiful geisha and the other of an infernal demon. Despite being blood stained, the geisha face is enchanting, with delicate features. Meanwhile, the demonic face is grotesque and terrifying, with sharp fangs, and twisted horns. The Mozaku Guardian attacks you!",
       agility: 4,
       endurance: 3,
       value: 5,
@@ -229,7 +228,7 @@ const adventure = {
     title: "Grand Entrance Hall",
     text: [
       "As you step through the front doors of the mansion, you find yourself in a Grand Entrance Hall. The air is thick with the musty scent of neglect, and dust dances in the filtered light that spills in through the stained glass windows above. The walls are adorned with ornate wallpaper, peeling and faded with age, and the ceiling soars high overhead, featuring intricate moldings and a massive chandelier that hangs ominously overhead, now covered in cobwebs.",
-      "The floor is made of polished wood, but years of disuse have left it scuffed and scratched, and in places, the boards creak beneath your feet. In one corner, a grand staircase ascends to the upper floors, its steps worn smooth from countless footsteps. Despite the neglect and decay, the grandeur of the entrance hall is still evident, a haunting reminder of a bygone era.",
+      "The floor is made of polished wood, but years of disuse have left it scuffed and scratched, and in places, the boards creak beneath your feet. In one corner, a grand staircase ascends to the upper floors, its steps worn smooth from countless footsteps.",
     ],
     connections: [],
     items: {},
@@ -238,7 +237,7 @@ const adventure = {
       encounterId: "e34a",
       name: "Gargoyle",
       description:
-        "A putrid Gargoyle crouches low, its muscles tensed and ready to pounce. Its eyes gleam with a feral intensity, and its claws are bared, glinting in the dim light. The gargoyle seems to be coiled like a spring, waiting for the perfect moment to strike, a fierce and formidable opponent that brooks no challenge.",
+        "A putrid Gargoyle crouches low, its muscles tensed and ready to pounce. Its eyes gleam with a feral intensity, and its claws are bared, glinting in the dim light, waiting for the perfect moment to strike.",
       agility: 3,
       endurance: 3,
       value: 5,
@@ -259,15 +258,14 @@ const adventure = {
     title: "Outer Sanctum",
     text: [
       "As you step into the Outer Sanctum, you're greeted by a series of burnished bronze idols, each perched atop a marble plinth that rises from the lush greenery below. The idols are intricate and detailed, depicting a range of mythical creatures and gods, and seem to glow with an inexplicable inner light.",
-      "Celadon jars line the walkway, each one overflowing with exotic plants and flowers that spill over the edges in a riot of color and texture. The scents of jasmine, orchids, and other tropical blooms fill the air, mingling with the sweet aroma of damp earth and sun-warmed stone.",
-      "The outer Sanctum exudes a sense of mystery and enchantment, as though you've stumbled upon a hidden garden of ancient gods and sacred rituals. The celadon jars and exotic plants add a touch of life and vibrancy to the space, providing a contrast to the cold stone and metal of the statues.",
+      "Celadon jars line the walkway, each one overflowing with exotic plants and flowers that spill over the edges in a riot of color and texture. The scents of jasmine, orchids, and other tropical blooms fill the air. The outer Sanctum exudes a sense of mystery and enchantment, as though you've stumbled upon a hidden garden of ancient gods and sacred rituals.",
     ],
     connections: [],
     encounter: {
       encounterId: "97e3",
-      name: "Blazing Hello Pony",
+      name: "Blazing Hell Pony",
       description:
-        "You see a little Pony in the corner of the sanctum gritting its teeth as its muscles start to bulge and bubbles. You hear its bones cracking and snapping. The horse transforms into something else. Its face contorts into a snarling muzzle. Before you no longer stands a mere horse. Instead, you are attacked by a massive smokebelching Blazing Hello Pony.",
+        "You see a little Pony in the corner of the sanctum gritting its teeth as its muscles start to bulge and bubbles. The horse transforms into something else. Its face contorts into a snarling muzzle. Before you no longer stands a mere horse. You are attacked by a massive Blazing Hell Pony.",
       agility: 5,
       endurance: 2,
       value: 8,
@@ -286,7 +284,6 @@ const adventure = {
     title: "Kitchen",
     text: [
       "The Kitchen is dimly lit, the sunlight struggling to penetrate the grime that coats the windows and cobwebs that drape from the ceiling. The air is heavy with the musty scent of mold and damp wood.",
-      "Rows of rusted appliances and dusty countertops stretching out into the gloom. Pots and pans hang from hooks along the walls, their surfaces tarnished and dented from years of disuse.",
       "The cabinets, once polished and gleaming, now sag from their hinges, their doors warped and splintered. The sinks are stained and chipped, their drains clogged with debris and decaying matter.",
     ],
     connections: [
@@ -335,7 +332,6 @@ const adventure = {
     title: "Gambling Room",
     text: [
       "You enter the Gambling Room, a tranquil and luxurious space, with walls covered in rich wood and plush carpeting underfoot. The center of the room is adorned with a green gambling table.",
-      "You hear a faint, haunting, spectral music, a sad tune that seems to have no source. It's as though the very walls themselves are singing, their hidden depths echoing with the strains of the otherworldly melody.",
       "Despite the eerie nature of the music, the green room exudes a sense of comfort and serenity.",
     ],
     connections: [
@@ -361,9 +357,8 @@ const adventure = {
   e59d6: {
     title: "Stables",
     text: [
-      "These are the Stables where Mortacion keeps his magnificent horses.",
-      "The air inside is thick with the rich, earthy smell of straw and manure, mingled with the sweet fragrance of polished leather and the musky scent of horses. The stalls are spacious and well-appointed, yet with dark shadows concealing their contents from you.",
-      "A row of wooden cabinets lines one wall, each one filled with an array of brushes, combs, and other grooming tools, while a small door at the back led to a paddock where the horses could stretch their legs and graze on fresh grass.",
+      "These are the Stables where Mortacion used to keep his magnificent horses. The air inside is thick with the rich, earthy smell of straw and manure, mingled with the sweet fragrance of polished leather and the musky scent of horses.",
+      "A row of wooden cabinets lines one wall, each one filled with an array of brushes, combs, and other grooming tools.",
     ],
     connections: [
       {
@@ -412,7 +407,6 @@ const adventure = {
     text: [
       "You step into an enormous indoor Green Maze, and your eyes are immediately drawn upward to the glass ceiling overhead, which floods the room with natural light. The room is filled with an array of vibrant greenery, arranged in a maze-like formation of hedges and privet bushes that twist and turn in a seemingly endless pattern. The air is filled with the scent of blooming flowers and fresh-cut grass.",
       "As you walk through the maze, the sound of your footsteps echoes throughout the chamber. The hedges are tall and perfectly manicured, forming walls that rise high overhead, while the privet bushes are trimmed into intricate shapes that resemble works of art. Small birds flit through the branches and dart in and out of hidden nooks, adding a touch of life to the otherwise static scenery.",
-      "In the center of the maze, you come across a small clearing, where a stone bench rests beneath a towering hedge. The bench is worn and weathered, but still sturdy enough to support your weight. As you sit and take in the beauty of the room, you can't help but feel as though you've stumbled upon a hidden oasis, a tranquil haven in the midst of the bustling city outside.",
     ],
     specialText: [
       "You are lost! You can get through the maze if you use a compass.",
@@ -446,7 +440,7 @@ const adventure = {
         type: "provisions",
         value: 10,
         description:
-          "The flask with the Potion of Healing is intricately designed, with glowing runes etched into its surface. Its contents are a potion of crushed dragon scales, mermaid tears, mandrake root, and moonflower petals that can reinvigorate you when consumed.",
+          "The flask with the Potion of Healing is intricately designed, with glowing runes etched into its surface. Its contents are a potion of mermaid tears, crushed mandrake root, and moonflower petals that will reinvigorate you when consumed.",
         image: "img/items/potion.jpg",
         relevantReference: "",
         addedChoices: [],
@@ -494,15 +488,15 @@ const adventure = {
     title: "Chamber of Summoning",
     text: [
       "You find your way to a place of unspeakable horrors: the Chamber of Summoning. The room is dimly lit, the air thick with the scent of burning incense and the sound of chanting that echoes through the space.",
-      "In the center of the room, a pentagram has been etched into the floor, surrounded by arcane symbols and glyphs. Candles flicker on every surface, casting grotesque shadows on the walls, while a blood-stained altar sits - barely visibly - in one corner, its surface adorned with rusty knives and other sinister implements.",
-      "The very air seems charged with malevolent energy, and the faint sound of whispers and moans can be heard just at the edge of hearing. The chamber is a place of terror and darkness, a space reserved for those who would delve into the darkest depths of the occult and the macabre.",
+      "In the center of the room, a pentagram has been etched into the floor, surrounded by arcane symbols and glyphs. The blood-stained altar sits - barely visibly - in one corner, its surface adorned with rusty knives and other sinister implements.",
+      "The chamber is a place of terror and darkness, a space reserved for those who would delve into the darkest depths of the occult and the macabre.",
     ],
     connections: [],
     encounter: {
       name: "Piranha Demon",
       encounterId: "98a1",
       description:
-        "In the center of the pentagram, a Piranha Demon materializes, a fearsome creature, with spiky scales that seem to gleam in the light, and red eyes that burn with a fiery intensity. Its teeth are like blades, razor-sharp and capable of tearing through flesh with ease, and its horns jut out from its forehead, giving it an even more menacing appearance. Despite its fearsome appearance, the piranha demon is simply a creature of its environment, shaped by the harsh and unforgiving waters that it calls home. Its insatiable appetite drives it to attack you.",
+        "In the center of the pentagram, a Piranha Demon materializes, a fearsome creature, with spiky scales that seem to gleam in the light, and red eyes that burn with a fiery intensity. Its teeth are like blades, razor-sharp and capable of tearing through flesh with ease, and its horns jut out from its forehead, giving it an even more menacing appearance. Its insatiable appetite drives it to attack you.",
       agility: 4,
       endurance: 3,
       value: 5,
@@ -582,8 +576,7 @@ const adventure = {
     title: "Study",
     text: [
       "Mortacion's Study is a space of intellectual curiosity and sophistication. The walls are lined with bookshelves, their surfaces crammed with leather-bound tomes and dusty volumes that speak to the erudition of the room's owner.",
-      "A large set of windows dominates the space, casting their light on a reading desk.",
-      "Despite the air of learnedness and intellectualism that pervades the space, there's a sense of dread and uneasiness about it. The forbidden knowledge that Mortacion has amassed over the years seems to have been warped the room itself.",
+      "A large set of windows dominates the space, casting their light on a reading desk. The forbidden knowledge that Mortacion has amassed over the years seems to have been warped the room itself.",
     ],
     specialText: [
       "You see an old leather-bound book open on a table. It's covered in dust and cobwebs, but you can still make out the title History of Necromancy. If you have a mystical Magnifying Glass, you can read the arcane language in the book.",
@@ -603,7 +596,6 @@ const adventure = {
     text: [
       "You have entered the Library. Leather bound books neatly line the shelves. The only sound that breaks the silence is the occasional creaking of the floorboards and the distant sound of wind whistling through the cracks in the walls.",
       "Despite the emptiness of the room, there's a sense of history and mystery that pervades the space, as though the very walls themselves are whispering secrets of the past.",
-      "As you walk through the empty library, you can't help but feel a sense of sadness and loss, as though the books and knowledge that once filled this space have been lost to the ages.",
     ],
     connections: [],
     encounter: {},
@@ -759,8 +751,6 @@ const adventure = {
     title: "Cave of Chasms",
     text: [
       "The Cave of Chasms is a place of eerie darkness, where the only light comes from the faint glow of phosphorescent moss clinging to the jagged stalagmites and stalactites that line the walls. The air is thick with the scent of damp earth and ancient stone, and the sound of dripping water echoes through the cavern like the footsteps of ghosts.",
-      "In the heart of the cave lies a deep chasm, with a seemingly bottomless drop that falls for hundreds of feet into the abyss. The edges of the chasm are jagged and rough, as though the rock itself has been twisted and contorted by some terrible force.",
-      "The darkness seems to grow even deeper around the chasm, as though it's a void that's devouring the light. You can hear the sound of rushing water far below, carried up on a cold, damp wind that seems to blow up from the depths.",
       "It's a place of bone-chilling fear, where you can feel the weight of the centuries bearing down on you like a heavy cloak. The cave seems to have a life of its own, and you can't help but feel as though you're a trespasser in a world that you were never meant to enter.",
     ],
     connections: [{ reference: "e5c06", text: "Go west to the Green Maze." }],
@@ -789,7 +779,7 @@ const adventure = {
     title: "Ethereal Mirror",
     text: [
       "In the corner of the room stands an Ethereal Mirror, its frame made of frozen wood that seems to glisten with a faint blue light. The mirror is like no other, for as one looks into it, they see not their own reflection, but rather a window into another realm. Through the mirror, one can see a mystical world filled with gnarly white trees, their branches stretching out towards the sky as if trying to touch the heavens",
-      "The ethereal realm beyond the mirror is bathed in a soft, otherworldly light, casting everything in a pale glow that seems to come from within. The air is thick with the scent of ancient forests and magic, and the sound of rustling leaves and distant whispers can be heard echoing through the trees.",
+      "The ethereal realm beyond the mirror is bathed in a soft, otherworldly light, casting everything in a pale glow that seems to come from within.",
     ],
     connections: [],
     encounter: {
@@ -850,7 +840,6 @@ const adventure = {
     title: "Observatory",
     text: [
       "In the heart of the Victorian Observatory, dimly illuminated by flickering candlelight and moonlight filtering through tall, arched windows, stands a majestic brass telescope. Mounted on a polished wooden tripod, the telescope is the centerpiece of the room, its long barrel pointing skyward, ready to unveil celestial secrets.",
-      "Walls adorned with intricately carved wood paneling and antique celestial maps reflect the golden glow of the candlelight. A large, round table dominates the space beneath the telescope's gaze, scattered with ancient leather-bound books, tattered scrolls, and astronomical charts. A quill pen and inkwell sit patiently at the ready, waiting for the next astronomical discovery to be recorded.",
       "The scent of old parchment, polished wood, and the faintest hint of stardust fills the air, a testament to the countless hours spent studying the heavens. Delicate, velvet curtains drape the windows, occasionally revealing a glint of the stars outside.",
     ],
     connections: [{ reference: "e5b02", text: "Go south to the Laboratory." }],
@@ -930,7 +919,7 @@ const adventure = {
   es1c4: {
     title: "Bokemin",
     text: [
-      "Infront of the Greenhouse you see the Bokemin. Standing scarcely taller than a human child, the Bokemin is a figure of unassuming stature, yet it possesses a presence that belies its size. Its body is stout and compact, built for traversing the forest's undergrowth with ease. A cap of vibrantly green leaves sits atop its head, a whimsical touch that serves to accentuate its enigmatic charm.",
+      "In front of the bedroom oak you see the Bokemin. Standing scarcely taller than a human child, the Bokemin is a figure of unassuming stature, yet it possesses a presence that belies its size. Its body is stout and compact, built for traversing the forest's undergrowth with ease. A cap of vibrantly green leaves sits atop its head, a whimsical touch that serves to accentuate its enigmatic charm.",
       "The Bokemin's face is a canvas of age and wisdom, with expressive, large eyes that seem to hold the knowledge of a thousand lifetimes. In one of its tiny hands it holds a gnarled branch like a cane.",
       "You tell the Bokemin about your quest to find your nephew William. The Bokemin nods and tells you that it will help you on your quest.",
     ],

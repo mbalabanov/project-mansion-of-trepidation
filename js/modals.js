@@ -408,7 +408,7 @@ function generateCharacterSheet(character, showDetailsButton) {
   const characterFortune = document.createElement("span");
   const characterExperience = document.createElement("span");
 
-  characterCol.classList.add("col");
+  characterCol.classList.add("col-l-6");
   characterAlert.classList.add("alert");
   characterAlert.classList.add("alert-dark");
   characterAlert.classList.add("text-center");
@@ -489,6 +489,13 @@ function generateCharacterSheet(character, showDetailsButton) {
     characterDetailsButton.setAttribute("id", "characterDetailsButton");
     characterDetailsButton.addEventListener("click", renderDetailsModal);
     characterAlert.appendChild(characterDetailsButton);
+  } else {
+    const characterDescription = document.createElement("p");
+    const characterDescriptionText = document.createTextNode(
+      character.description
+    );
+    characterDescription.appendChild(characterDescriptionText);
+    characterAlert.appendChild(characterDescription);
   }
 
   characterAlert.appendChild(characterInventory);

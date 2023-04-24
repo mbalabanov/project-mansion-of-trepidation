@@ -706,6 +706,7 @@ function renderFightResult(whoGotHit) {
     hitResult.textContent = "Your opponent hit you!";
   }
   fightResultArea.appendChild(hitResult);
+  fightResultArea.scrollIntoView({ behavior: "smooth" });
 }
 
 function renderDieRolls(playerDie, opponentDie) {
