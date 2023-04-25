@@ -93,6 +93,73 @@ function renderIntroduction(introduction, availableCharacters) {
     renderLoadSaveArea("loadArea", false);
   }
 }
+function renderEntry(currentEntryId) {
+  changedEntryAudio.play();
+
+  currentEntry = currentEntryId;
+
+  // Clear all areas
+  clearDisplayArea(textOutput);
+  clearDisplayArea(locationTitleArea);
+  clearDisplayArea(incidentArea);
+  clearDisplayArea(itemsOnLocation);
+  clearDisplayArea(encounter);
+  clearDisplayArea(npcArea);
+  clearDisplayArea(choices);
+
+  entryToShow = currentAdventure[currentEntryId];
+  //  showCurrentEntry.innerHTML = currentEntryId;
+
+  entryToShow.text.forEach((textElement) => {
+    const textEntry = document.createElement("p");
+    const textEntryText = document.createTextNode(textElement);
+    textEntry.appendChild(textEntryText);
+    textOutput.appendChild(textEntry);
+  });
+
+  if (entryToShow.specialText) {
+    entryToShow.specialText.forEach((specialTextElement) => {
+      const specialTextEntry = document.createElement("p");
+      specialTextEntry.classList.add("alert");
+      specialTextEntry.classList.add("alert-info");
+      const specialTextEntryText = document.createTextNode(specialTextElement);
+      specialTextEntry.appendChild(specialTextEntryText);
+      textOutput.appendChild(specialTextEntry);
+    });
+  }
+
+  if (entryToShow.encounter.encounterId) {
+    currentOpponent = entryToShow.encounter;
+    renderEncounter(currentOpponent);
+  }
+
+  if (entryToShow.items) {
+    for (const itemKey in entryToShow.items) {
+      renderItemOnLocation(itemKey, entryToShow);
+    }
+
+    for (const itemKey in entryToShow.items) {
+      let getItemButton = document.getElementById(`button-getItem-${itemKey}`);
+      getItemButton.addEventListener("click", getItem);
+    }
+  }
+
+  if (entryToShow.incident.text) {
+    renderIncidentOnLocation(entryToShow);
+  }
+
+  if (entryToShow.npc.npcId) {
+    renderNpcEntry(entryToShow);
+  }
+
+  entryToShow.connections.forEach((option) => {
+    renderOptions(option.text, option.reference);
+  });
+
+  const locationTitleText = document.createTextNode(entryToShow.title);
+  locationTitleArea.appendChild(locationTitleText);
+  locationImage.src = `img/locations/image_${currentEntryId}.jpg`;
+}
 
 function renderPlayerArea() {
   clearDisplayArea(playerCharacterArea);
@@ -249,74 +316,6 @@ function renderMap() {
   mapModal.show();
 }
 
-function renderEntry(currentEntryId) {
-  changedEntryAudio.play();
-
-  currentEntry = currentEntryId;
-
-  // Clear all areas
-  clearDisplayArea(textOutput);
-  clearDisplayArea(locationTitleArea);
-  clearDisplayArea(incidentArea);
-  clearDisplayArea(itemsOnLocation);
-  clearDisplayArea(encounter);
-  clearDisplayArea(npcArea);
-  clearDisplayArea(choices);
-
-  entryToShow = currentAdventure[currentEntryId];
-  //  showCurrentEntry.innerHTML = currentEntryId;
-
-  entryToShow.text.forEach((textElement) => {
-    const textEntry = document.createElement("p");
-    const textEntryText = document.createTextNode(textElement);
-    textEntry.appendChild(textEntryText);
-    textOutput.appendChild(textEntry);
-  });
-
-  if (entryToShow.specialText) {
-    entryToShow.specialText.forEach((specialTextElement) => {
-      const specialTextEntry = document.createElement("p");
-      specialTextEntry.classList.add("alert");
-      specialTextEntry.classList.add("alert-info");
-      const specialTextEntryText = document.createTextNode(specialTextElement);
-      specialTextEntry.appendChild(specialTextEntryText);
-      textOutput.appendChild(specialTextEntry);
-    });
-  }
-
-  if (entryToShow.encounter.encounterId) {
-    currentOpponent = entryToShow.encounter;
-    renderEncounter(currentOpponent);
-  }
-
-  if (entryToShow.items) {
-    for (const itemKey in entryToShow.items) {
-      renderItemOnLocation(itemKey, entryToShow);
-    }
-
-    for (const itemKey in entryToShow.items) {
-      let getItemButton = document.getElementById(`button-getItem-${itemKey}`);
-      getItemButton.addEventListener("click", getItem);
-    }
-  }
-
-  if (entryToShow.incident.text) {
-    renderIncidentOnLocation(entryToShow);
-  }
-
-  if (entryToShow.npc.npcId) {
-    renderNpcEntry(entryToShow);
-  }
-
-  entryToShow.connections.forEach((option) => {
-    renderOptions(option.text, option.reference);
-  });
-
-  const locationTitleText = document.createTextNode(entryToShow.title);
-  locationTitleArea.appendChild(locationTitleText);
-  locationImage.src = `img/locations/image_${currentEntryId}.jpg`;
-}
-
 function renderOptions(text, reference) {
   const optionItem = document.createElement("button");
 
@@ -358,11 +357,11 @@ function renderEncounter(encounterData) {
   const encounterDiv = document.createElement("div");
   encounterDiv.classList.add("alert", "alert-danger");
 
-  const rowDiv1 = document.createElement("div");
-  rowDiv1.classList.add("row");
+  const encounterRow = document.createElement("div");
+  encounterRow.classList.add("row");
 
-  const colDiv1 = document.createElement("div");
-  colDiv1.classList.add("col-md-8");
+  const encounterCol = document.createElement("div");
+  encounterCol.classList.add("col-md-12");
 
   const encounterTitle = document.createElement("h3");
   encounterTitle.textContent = encounterData.name;
@@ -370,29 +369,25 @@ function renderEncounter(encounterData) {
   const encounterDescription = document.createElement("p");
   encounterDescription.textContent = encounterData.description;
 
-  colDiv1.appendChild(encounterTitle);
-  colDiv1.appendChild(encounterDescription);
-
-  const colDiv2 = document.createElement("div");
-  colDiv2.classList.add("col-md-4");
+  encounterCol.appendChild(encounterTitle);
+  encounterCol.appendChild(encounterDescription);
 
   const encounterImage = document.createElement("img");
   encounterImage.src = encounterData.image;
   encounterImage.alt = encounterData.name;
   encounterImage.classList.add("img-fluid", "border", "border-dark", "rounded");
 
-  colDiv2.appendChild(encounterImage);
+  encounterCol.appendChild(encounterImage);
 
-  rowDiv1.appendChild(colDiv1);
-  rowDiv1.appendChild(colDiv2);
+  encounterRow.appendChild(encounterCol);
 
-  const rowDiv2 = document.createElement("div");
-  rowDiv2.classList.add("row");
+  const encounterRow2 = document.createElement("div");
+  encounterRow2.classList.add("row");
 
-  const colDiv3 = document.createElement("div");
-  colDiv3.classList.add("col-md-12");
-  colDiv3.classList.add("m-1");
-  colDiv3.classList.add("text-center");
+  const encounterColFightArea = document.createElement("div");
+  encounterColFightArea.classList.add("col-md-12");
+  encounterColFightArea.classList.add("m-1");
+  encounterColFightArea.classList.add("text-center");
 
   const agilityBtn = document.createElement("span");
   agilityBtn.classList.add("badge", "bg-danger", "me-2");
@@ -462,15 +457,15 @@ function renderEncounter(encounterData) {
   fightInfo.appendChild(playerDieRollSpan);
   fightInfo.appendChild(fightResultDiv);
 
-  colDiv3.appendChild(agilityBtn);
-  colDiv3.appendChild(enduranceBtn);
-  colDiv3.appendChild(fightControl);
-  colDiv3.appendChild(fightInfo);
+  encounterColFightArea.appendChild(agilityBtn);
+  encounterColFightArea.appendChild(enduranceBtn);
+  encounterColFightArea.appendChild(fightControl);
+  encounterColFightArea.appendChild(fightInfo);
 
-  rowDiv2.appendChild(colDiv3);
+  encounterRow2.appendChild(encounterColFightArea);
 
-  encounterDiv.appendChild(rowDiv1);
-  encounterDiv.appendChild(rowDiv2);
+  encounterDiv.appendChild(encounterRow);
+  encounterDiv.appendChild(encounterRow2);
 
   clearDisplayArea(encounter);
   encounter.appendChild(encounterDiv);
@@ -500,64 +495,61 @@ function renderInfoNotificationModal(titleText, notificationText) {
 }
 
 function renderItemOnLocation(itemKey, entryToShow) {
-  const itemOnLocationDiv = document.createElement("div");
-  itemOnLocationDiv.classList.add("alert", "alert-info");
+  const itemOnLocationArea = document.createElement("div");
+  itemOnLocationArea.classList.add("alert", "alert-info");
   const itemOnLocationRow = document.createElement("div");
   itemOnLocationRow.classList.add("row");
 
-  const itemOnLocationCol1 = document.createElement("div");
-  itemOnLocationCol1.classList.add("col-md-8");
+  const itemOnLocationCol = document.createElement("div");
+  itemOnLocationCol.classList.add("col-md-12");
 
-  const itemOnLocationCol1Title = document.createElement("h3");
-  const itemOnLocationCol1TitleText = document.createTextNode(
+  const itemOnLocationColTitle = document.createElement("h3");
+  const itemOnLocationColTitleText = document.createTextNode(
     entryToShow.items[itemKey].name
   );
-  itemOnLocationCol1Title.appendChild(itemOnLocationCol1TitleText);
+  itemOnLocationColTitle.appendChild(itemOnLocationColTitleText);
 
-  const itemOnLocationCol1Description = document.createElement("p");
-  const itemOnLocationCol1DescriptionText = document.createTextNode(
+  const itemOnLocationColDescription = document.createElement("p");
+  const itemOnLocationColDescriptionText = document.createTextNode(
     entryToShow.items[itemKey].description
   );
-  itemOnLocationCol1Description.appendChild(itemOnLocationCol1DescriptionText);
+  itemOnLocationColDescription.appendChild(itemOnLocationColDescriptionText);
 
-  itemOnLocationCol1.appendChild(itemOnLocationCol1Title);
-  itemOnLocationCol1.appendChild(itemOnLocationCol1Description);
+  itemOnLocationCol.appendChild(itemOnLocationColTitle);
+  itemOnLocationCol.appendChild(itemOnLocationColDescription);
 
-  const itemOnLocationCol1ItemParagraph = document.createElement("p");
+  const itemOnLocationColItemParagraph = document.createElement("p");
 
-  const itemOnLocationCol1ItemButton = document.createElement("button");
-  itemOnLocationCol1ItemButton.classList.add("btn", "btn-info");
-  itemOnLocationCol1ItemButton.setAttribute("id", `button-getItem-${itemKey}`);
-  itemOnLocationCol1ItemButton.setAttribute("data-itemToGet", itemKey);
-  itemOnLocationCol1ItemButton.setAttribute(
+  const itemOnLocationColItemButton = document.createElement("button");
+  itemOnLocationColItemButton.classList.add("btn", "btn-info");
+  itemOnLocationColItemButton.setAttribute("id", `button-getItem-${itemKey}`);
+  itemOnLocationColItemButton.setAttribute("data-itemToGet", itemKey);
+  itemOnLocationColItemButton.setAttribute(
     "data-itemValue",
     entryToShow.items[itemKey].value
   );
-  const itemOnLocationCol1ItemButtonText = document.createTextNode("Get Item");
-  itemOnLocationCol1ItemButton.appendChild(itemOnLocationCol1ItemButtonText);
-  itemOnLocationCol1ItemParagraph.appendChild(itemOnLocationCol1ItemButton);
+  const itemOnLocationColItemButtonText = document.createTextNode("Get Item");
+  itemOnLocationColItemButton.appendChild(itemOnLocationColItemButtonText);
+  itemOnLocationColItemParagraph.appendChild(itemOnLocationColItemButton);
 
-  itemOnLocationCol1.appendChild(itemOnLocationCol1ItemParagraph);
+  itemOnLocationCol.appendChild(itemOnLocationColItemParagraph);
 
-  const itemOnLocationCol2 = document.createElement("div");
-  itemOnLocationCol2.classList.add("col-md-4");
-  const itemOnLocationCol2Image = document.createElement("img");
-  itemOnLocationCol2Image.classList.add(
+  const itemOnLocationImage = document.createElement("img");
+  itemOnLocationImage.classList.add(
     "img-fluid",
     "border",
     "border-dark",
     "rounded"
   );
-  itemOnLocationCol2Image.setAttribute("src", entryToShow.items[itemKey].image);
-  itemOnLocationCol2Image.setAttribute("alt", entryToShow.items[itemKey].name);
+  itemOnLocationImage.setAttribute("src", entryToShow.items[itemKey].image);
+  itemOnLocationImage.setAttribute("alt", entryToShow.items[itemKey].name);
 
-  itemOnLocationCol2.appendChild(itemOnLocationCol2Image);
+  itemOnLocationCol.appendChild(itemOnLocationImage);
 
-  itemOnLocationRow.appendChild(itemOnLocationCol1);
-  itemOnLocationRow.appendChild(itemOnLocationCol2);
-  itemOnLocationDiv.appendChild(itemOnLocationRow);
+  itemOnLocationRow.appendChild(itemOnLocationCol);
+  itemOnLocationArea.appendChild(itemOnLocationRow);
 
-  itemsOnLocation.appendChild(itemOnLocationDiv);
+  itemsOnLocation.appendChild(itemOnLocationArea);
 }
 
 function renderIncidentOnLocation(entryToShow) {
@@ -627,59 +619,53 @@ function renderNpcEntry(entryToShow) {
   const npcRow = document.createElement("div");
   npcRow.classList.add("row");
 
-  const npcCol1 = document.createElement("div");
-  npcCol1.classList.add("col-md-8");
+  const npcCol = document.createElement("div");
+  npcCol.classList.add("col-md-12");
 
-  const npcCol1Title = document.createElement("h3");
-  const npcCol1TitleText = document.createTextNode(entryToShow.npc.name);
+  const npcColTitle = document.createElement("h3");
+  const npcColTitleText = document.createTextNode(entryToShow.npc.name);
 
-  npcCol1Title.appendChild(npcCol1TitleText);
+  npcColTitle.appendChild(npcColTitleText);
 
-  const npcCol1Description = document.createElement("p");
-  const npcCol1DescriptionText = document.createTextNode(
+  const npcColDescription = document.createElement("p");
+  const npcColDescriptionText = document.createTextNode(
     entryToShow.npc.description
   );
-  npcCol1Description.appendChild(npcCol1DescriptionText);
+  npcColDescription.appendChild(npcColDescriptionText);
 
-  const npcCol1ButtonParagraph = document.createElement("p");
+  const npcColButtonParagraph = document.createElement("p");
 
-  const npcCol1Button1 = document.createElement("button");
-  npcCol1Button1.classList.add("btn", "btn-primary");
-  npcCol1Button1.setAttribute("id", `npc-${entryToShow.npc.npcId}`);
-  npcCol1Button1.setAttribute("data-entrytogoto", entryToShow.npc.reference);
-  npcCol1Button1.onclick = goToEntry;
-  const npcCol1Button1Text = document.createTextNode("Talk");
-  npcCol1Button1.appendChild(npcCol1Button1Text);
+  const npcColButtonTalk = document.createElement("button");
+  npcColButtonTalk.classList.add("btn", "btn-primary");
+  npcColButtonTalk.setAttribute("id", `npc-${entryToShow.npc.npcId}`);
+  npcColButtonTalk.setAttribute("data-entrytogoto", entryToShow.npc.reference);
+  npcColButtonTalk.onclick = goToEntry;
+  const npcColButtonTalkText = document.createTextNode("Talk");
+  npcColButtonTalk.appendChild(npcColButtonTalkText);
 
-  npcCol1ButtonParagraph.appendChild(npcCol1Button1);
+  npcColButtonParagraph.appendChild(npcColButtonTalk);
 
-  const npcCol1Button2 = document.createElement("button");
-  npcCol1Button2.classList.add("btn", "btn-danger", "mx-1");
-  npcCol1Button2.setAttribute("id", `npc-fight-${entryToShow.npc.npcId}`);
-  npcCol1Button2.onclick = playerDies;
+  const npcColButtonFight = document.createElement("button");
+  npcColButtonFight.classList.add("btn", "btn-danger", "mx-1");
+  npcColButtonFight.setAttribute("id", `npc-fight-${entryToShow.npc.npcId}`);
+  npcColButtonFight.onclick = playerDies;
 
-  const npcCol1Button2Text = document.createTextNode("Fight");
-  npcCol1Button2.appendChild(npcCol1Button2Text);
+  const npcColButtonFightText = document.createTextNode("Fight");
+  npcColButtonFight.appendChild(npcColButtonFightText);
 
-  npcCol1ButtonParagraph.appendChild(npcCol1Button2);
+  npcColButtonParagraph.appendChild(npcColButtonFight);
 
-  npcCol1.appendChild(npcCol1Title);
-  npcCol1.appendChild(npcCol1Description);
-  npcCol1.appendChild(npcCol1ButtonParagraph);
+  npcCol.appendChild(npcColTitle);
+  npcCol.appendChild(npcColDescription);
+  npcCol.appendChild(npcColButtonParagraph);
 
-  const npcCol2 = document.createElement("div");
-  npcCol2.classList.add("col-md-4");
+  const npcImage = document.createElement("img");
+  npcImage.classList.add("img-fluid", "border", "border-dark", "rounded");
+  npcImage.setAttribute("src", entryToShow.npc.image);
+  npcImage.setAttribute("alt", entryToShow.npc.name);
 
-  const npcCol2Image = document.createElement("img");
-  npcCol2Image.classList.add("img-fluid", "border", "border-dark", "rounded");
-  npcCol2Image.setAttribute("src", entryToShow.npc.image);
-  npcCol2Image.setAttribute("alt", entryToShow.npc.name);
-
-  npcCol2.appendChild(npcCol2Image);
-
-  npcRow.appendChild(npcCol1);
-  npcRow.appendChild(npcCol2);
-
+  npcCol.appendChild(npcImage);
+  npcRow.appendChild(npcCol);
   npcDiv.appendChild(npcRow);
 
   npcArea.appendChild(npcDiv);
@@ -835,7 +821,7 @@ function renderLoadSaveArea(areaName, includeInfoAndSaveButton) {
 
     loadSaveArea.appendChild(infoButton);
 
-    infoButton.addEventListener("click", renderInformationModal);
+    infoButton.addEventListener("click", renderAboutModal);
   }
 
   const loadButton = document.createElement("button");
@@ -876,7 +862,7 @@ function renderLoadSaveArea(areaName, includeInfoAndSaveButton) {
   }
 }
 
-function renderInformationModal() {
+function renderAboutModal() {
   infoAudio.play();
 
   const detailsModal = new bootstrap.Modal(

@@ -81,7 +81,7 @@ function generateMapModal() {
   mapModal.setAttribute("data-bs-keyboard", "true");
 
   const modalDialog = document.createElement("div");
-  modalDialog.className = "modal-dialog modal-xl modal-dialog-centered";
+  modalDialog.className = "modal-dialog modal-xl";
 
   const modalContent = document.createElement("div");
   modalContent.className = "modal-content bg-secondary bg-gradient text-light";
@@ -135,7 +135,7 @@ function generatePlayerDiesModal() {
   modalDiv.setAttribute("data-bs-keyboard", "false");
 
   const modalDialogDiv = document.createElement("div");
-  modalDialogDiv.className = "modal-dialog modal-md modal-dialog-centered";
+  modalDialogDiv.className = "modal-dialog modal-md";
 
   const modalContentDiv = document.createElement("div");
   modalContentDiv.className = "modal-content bg-danger bg-gradient text-light";
@@ -199,7 +199,7 @@ function generateInventoryFullModal() {
   inventoryFullModal.setAttribute("data-bs-keyboard", "true");
 
   const modalDialog = document.createElement("div");
-  modalDialog.className = "modal-dialog modal-md modal-dialog-centered";
+  modalDialog.className = "modal-dialog modal-md";
 
   const modalContent = document.createElement("div");
   modalContent.className = "modal-content bg-success bg-gradient text-light";
@@ -256,11 +256,7 @@ function generateNotificationsModal() {
   notificationsModal.setAttribute("data-bs-keyboard", "true");
 
   const modalDialog = document.createElement("div");
-  modalDialog.classList.add(
-    "modal-dialog",
-    "modal-md",
-    "modal-dialog-centered"
-  );
+  modalDialog.classList.add("modal-dialog", "modal-md");
 
   const modalContent = document.createElement("div");
   modalContent.classList.add(
@@ -502,4 +498,13 @@ function generateCharacterSheet(character, showDetailsButton) {
   characterCol.appendChild(characterAlert);
 
   return characterCol;
+}
+
+function generateAllModals() {
+  generateStartModal();
+  generateMapModal();
+  generatePlayerDiesModal();
+  generateInventoryFullModal();
+  generateNotificationsModal();
+  generateDetailsModal();
 }

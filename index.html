@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adventure</title>
-    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
   </head>
 
   <body class="bg-dark text-white" id="top">
@@ -41,15 +41,10 @@
     <script src="js/characters.js"></script>
     <script src="js/adventure.js"></script>
     <script src="js/game.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 
     <script>
-      generateStartModal();
-      generateMapModal();
-      generatePlayerDiesModal();
-      generateInventoryFullModal();
-      generateNotificationsModal();
-      generateDetailsModal();
+      generateAllModals();
       renderIntroduction(introduction, availableCharacters);
     </script>
   </body>
